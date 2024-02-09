@@ -7,7 +7,7 @@ _min_copier_version: "9.1.0"
 _subdirectory: src/django_twc_package
 
 template_version:
-  default: "2024.1"
+  default: "2024.2"
   when: false
 
 # ----------------------------------------------------------------------
