@@ -58,4 +58,3 @@ As this template is mainly for internal use at The Westervelt Company, we do not
 ## License
 
 `django-twc-package` is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
