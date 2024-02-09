@@ -57,4 +57,3 @@ To see a list of all available commands, ensure `just` is installed and run the 
 ```shell
 just
 ```
-

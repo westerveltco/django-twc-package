@@ -25,11 +25,11 @@ tag = true
 version_pattern = "YYYY.INC1"
 
 [tool.bumpver.file_patterns]
-"copier.yml" = [
-  'default: "{version}"'
-]
 "VERSION" = [
   '{version}'
+]
+"copier.yml" = [
+  'default: "{version}"'
 ]
 "tests/test_version.py" = [
   'assert version == "{version}"'
