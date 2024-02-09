@@ -4,7 +4,6 @@ import logging
 
 from django.conf import settings
 
-
 pytest_plugins = []  # type: ignore
 
 

@@ -35,15 +35,15 @@ def should_skip(python: str, django: str) -> bool:
     if django == DJMAIN and version(python) < version(DJMAIN_MIN_PY):
         # Django main requires Python 3.10+
         return True
-    
+
     if django == DJ32 and version(python) >= version(PY312):
         # Django 3.2 requires Python < 3.12
         return True
-    
+
     if django == DJ50 and version(python) < version(PY310):
         # Django 5.0 requires Python 3.10+
         return True
-    
+
     return False
 
 
