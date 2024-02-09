@@ -56,7 +56,7 @@ When it comes time to cut a new release, follow these steps:
 
 5. Once CI has passed and all the checks are green ✅, merge the pull request.
 
-6. Draft a [new release](https://github.com/example_owner/semver-project/releases/new) on GitHub.
+6. Draft a [new release](https://github.com/example_owner/calver-mminc1-project/releases/new) on GitHub.
 
    Use the version number with a leading `v` as the tag name (e.g. `v2024.2.1`).
 

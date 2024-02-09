@@ -29,7 +29,7 @@ TEST_SETTINGS = {
     },
     "EMAIL_BACKEND": "django.core.mail.backends.locmem.EmailBackend",
     "INSTALLED_APPS": [
-        "semver_project",
+        "calver_mminc1_project",
     ],
     "LOGGING_CONFIG": None,
     "PASSWORD_HASHERS": [

@@ -1,9 +1,8 @@
-# semver-project
+# calver-mminc1-project
 
-[![PyPI](https://img.shields.io/pypi/v/semver-project)](https://pypi.org/project/semver-project/)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/semver-project)
-![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0
--%2344B78B?labelColor=%23092E20)
+[![PyPI](https://img.shields.io/pypi/v/calver-mminc1-project)](https://pypi.org/project/calver-mminc1-project/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/calver-mminc1-project)
+![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0-%2344B78B?labelColor=%23092E20)
 <!-- https://shields.io/badges -->
 <!-- django-3.2 | 4.2 | 5.0-#44B78B -->
 <!-- labelColor=%23092E20 -->
@@ -18,7 +17,7 @@
 1. Install the package from PyPI:
 
 ```bash
-python -m pip install semver-project
+python -m pip install calver-mminc1-project
 ```
 
 2. Add the app to your Django project's `INSTALLED_APPS`:
@@ -26,7 +25,7 @@ python -m pip install semver-project
 ```python
 INSTALLED_APPS = [
     ...,
-    "semver_project",
+    "calver_mminc1_project",
     ...,
 ]
 ```
@@ -35,8 +34,8 @@ INSTALLED_APPS = [
 
 ## Documentation
 
-Please refer to the [documentation](https://semver-project.westervelt.dev/) for more information.
+Please refer to the [documentation](https://calver-mminc1-project.westervelt.dev/) for more information.
 
 ## License
 
-`semver-project` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.
+`calver-mminc1-project` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.

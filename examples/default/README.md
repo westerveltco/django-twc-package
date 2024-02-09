@@ -2,8 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/semver-project)](https://pypi.org/project/semver-project/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/semver-project)
-![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0
--%2344B78B?labelColor=%23092E20)
+![Django Version](https://img.shields.io/badge/django-3.2%20%7C%204.2%20%7C%205.0-%2344B78B?labelColor=%23092E20)
 <!-- https://shields.io/badges -->
 <!-- django-3.2 | 4.2 | 5.0-#44B78B -->
 <!-- labelColor=%23092E20 -->

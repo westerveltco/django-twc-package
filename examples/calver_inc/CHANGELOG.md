@@ -21,4 +21,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - John Doe <johndoe@example.com> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/semver-project/commits/main/
+[unreleased]: https://github.com/westerveltco/calver-inc1-project/commits/main/

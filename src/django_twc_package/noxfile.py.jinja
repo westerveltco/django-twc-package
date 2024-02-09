@@ -18,7 +18,7 @@ DJMAIN = "main"
 DJMAIN_MIN_PY = PY310
 {%- endif %}
 DJ_VERSIONS = [{% for django_version in django_versions %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}{% if test_django_main %}, DJMAIN{% endif %}]
-DJ_LTS = [{% for django_version in django_lts_versions %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
+DJ_LTS = [{% for django_version in django_lts_versions.split(',') %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
 DJ_DEFAULT = DJ_LTS[0]
 DJ_LATEST = DJ_VERSIONS[-{% if test_django_main %}2{% else %}1{% endif %}]
 
@@ -30,21 +30,25 @@ def version(ver: str) -> tuple[int, ...]:
 
 def should_skip(python: str, django: str) -> bool:
     """Return True if the test should be skipped"""
-    {%- if test_django_main %}
+
+    {% if test_django_main -%}
     if django == DJMAIN and version(python) < version(DJMAIN_MIN_PY):
         # Django main requires Python 3.10+
         return True
-    {% endif %}
-    {%- if "3.2" in django_versions %}
+    {%- endif %}
+
+    {% if "3.2" in django_versions -%}
     if django == DJ32 and version(python) >= version(PY312):
         # Django 3.2 requires Python < 3.12
         return True
-    {% endif %}
-    {%- if "5.0" in django_versions %}
+    {%- endif %}
+
+    {% if "5.0" in django_versions -%}
     if django == DJ50 and version(python) < version(PY310):
         # Django 5.0 requires Python 3.10+
         return True
-    {% endif %}
+    {%- endif %}
+
     return False
 
 

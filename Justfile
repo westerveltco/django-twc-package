@@ -4,7 +4,7 @@ set dotenv-load := true
     just --list
 
 generate-example DATA_FILE:
-    rye run copier copy . {{ trim_end_match(DATA_FILE, '.yml') }} --force --data-file {{ DATA_FILE }}
+    rye run copier copy -r HEAD . {{ trim_end_match(DATA_FILE, '.yml') }} --force --data-file {{ DATA_FILE }}
 
 # ----------------------------------------------------------------------
 # UTILS
