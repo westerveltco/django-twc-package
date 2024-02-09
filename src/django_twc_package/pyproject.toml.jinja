@@ -72,7 +72,7 @@ commit = true
 commit_message = ":bookmark: bump version {old_version} -> {new_version}"
 current_version = "{{ current_version }}"
 push = false  # set to false for CI
-tag = true
+tag = false
 {%- if versioning_scheme == "SemVer" %}
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 {%- else %}
@@ -83,8 +83,11 @@ version_pattern = "{{ versioning_scheme[pattern_start:pattern_end] }}"
 {%- endif %}
 
 [tool.bumpver.file_patterns]
-"{{ module_name }}/__init__.py" = [
+"src/{{ module_name }}/__init__.py" = [
   '__version__ = "{version}"'
+]
+"tests/test_version.py" = [
+  'assert __version__ == "{version}"'
 ]
 
 [tool.coverage.paths]
@@ -166,6 +169,7 @@ exclude = [
   ".git",
   ".github",
   ".hg",
+  ".mypy_cache",
   ".ruff_cache",
   ".svn",
   ".tox",
@@ -178,6 +182,7 @@ exclude = [
   "node_modules",
   "venv"
 ]
+extend-include = ["*.pyi?"]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "I"]
 ignore = ["E501", "E741"]  # temporary
@@ -189,7 +194,8 @@ select = [
   "B",  # flake8-bugbear
   "E",  # Pycodestyle
   "F",  # Pyflakes
-  "I"  # isort
+  "I",  # isort
+  "UP"  # pyupgrade
 ]
 # Assume Python >{{ python_min_version }}.
 target-version = "py{{ python_min_version | replace('.', '') }}"
@@ -207,3 +213,7 @@ quote-style = "double"
 force-single-line = true
 known-first-party = ["{{ module_name }}"]
 required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
