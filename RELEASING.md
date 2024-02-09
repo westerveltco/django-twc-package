@@ -50,11 +50,27 @@ When it comes time to cut a new release, follow these steps:
 
 3. Ensure the [CHANGELOG](CHANGELOG.md) is up to date. If updates are needed, add them now in the release branch.
 
-4. Create a pull request from the release branch to `main`.
+4. Regenerate the examples in the [`examples`](examples) directory.
 
-5. Once CI has passed and all the checks are green ✅, merge the pull request.
+   The examples are generated from the `.yml` data files in the [`examples`](examples) directory.
 
-6. Draft a [new release](https://github.com/westerveltco/django-twc-package/releases/new) on GitHub.
+   It is important to regenerate the examples **after** bumping the version number, because the version number is used in the examples. This will ensure that the examples are up to date and accurate representations of the project template.
+
+   ```shell
+   # for each example data file in the examples directory, run
+   copier copy examples/<example_name> --force --data-file <example_name>.yml
+
+   # alternatively, using the provided [`just`](../Justfile) command
+   just regenerate-examples
+   ```
+
+   This will regenerate the examples in the `examples` directory. If you have made changes to the project template, you should also double check the examples to make sure they are correct and up to date.
+
+5. Create a pull request from the release branch to `main`.
+
+6. Once CI has passed and all the checks are green ✅, merge the pull request.
+
+7. Draft a [new release](https://github.com/westerveltco/django-twc-package/releases/new) on GitHub.
 
    Use the version number with a leading `v` as the tag name (e.g. `v2024.1`).
 
@@ -62,4 +78,4 @@ When it comes time to cut a new release, follow these steps:
 
    If this is a tagged release, make sure to check the 'Set as a pre-release' checkbox.
 
-7. Once you are satisfied with the release, publish the release.
+8. Once you are satisfied with the release, publish the release.
