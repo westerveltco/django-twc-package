@@ -32,5 +32,5 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-project/compare/v2024.1...HEAD
-[2024.1]: https://github.com/westerveltco/django-simple-nav/releases/tag/v2024.1
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.1...HEAD
+[2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
