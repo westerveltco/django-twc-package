@@ -1,5 +1,5 @@
 author_name: John Doe
 author_email: johndoe@example.com
 github_owner: example_owner
-package_name: semver-project
+package_name: calver-inc1-project
 versioning_scheme: "CalVer (YYYY.INC1)"

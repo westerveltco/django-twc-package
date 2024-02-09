@@ -23,13 +23,13 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Django setup -----------------------------------------------------------
 # This is required to import Django code in Sphinx using autodoc.
 
-# os.environ["DJANGO_SETTINGS_MODULE"] = "semver_project.settings"
+# os.environ["DJANGO_SETTINGS_MODULE"] = "tests.settings"
 # django.setup()
 
 
 # -- Project information -----------------------------------------------------
 
-project = ""
+project = "semver-project"
 copyright = "2023, John Doe"
 author = "John Doe"
 

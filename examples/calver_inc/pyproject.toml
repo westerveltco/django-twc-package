@@ -31,7 +31,7 @@ description = "An example Django package"
 dynamic = ["version"]
 keywords = []
 license = {file = "LICENSE"}
-name = "semver-project"
+name = "calver-inc1-project"
 readme = "README.md"
 requires-python = ">=3.8"
 
@@ -65,21 +65,24 @@ docs = [
 lint = ["pre-commit"]
 
 [project.urls]
-Documentation = "https://semver-project.westervelt.dev/"
-Issues = "https://github.com/example_owner/semver-project/issues"
-Source = "https://github.com/example_owner/semver-project"
+Documentation = "https://calver-inc1-project.westervelt.dev/"
+Issues = "https://github.com/example_owner/calver-inc1-project/issues"
+Source = "https://github.com/example_owner/calver-inc1-project"
 
 [tool.bumpver]
 commit = true
 commit_message = ":bookmark: bump version {old_version} -> {new_version}"
 current_version = "2024.1"
 push = false  # set to false for CI
-tag = true
+tag = false
 version_pattern = "YYYY.INC1"
 
 [tool.bumpver.file_patterns]
-"semver_project/__init__.py" = [
+"src/calver_inc1_project/__init__.py" = [
   '__version__ = "{version}"'
+]
+"tests/test_version.py" = [
+  'assert __version__ == "{version}"'
 ]
 
 [tool.coverage.paths]
@@ -98,10 +101,10 @@ fail_under = 75
 
 [tool.coverage.run]
 omit = [
-  "src/semver_project/migrations/*",
+  "src/calver_inc1_project/migrations/*",
   "tests/*"
 ]
-source = ["semver_project"]
+source = ["calver_inc1_project"]
 
 [tool.django-stubs]
 django_settings_module = "tests.settings"
@@ -114,10 +117,10 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/semver_project"]
+packages = ["src/calver_inc1_project"]
 
 [tool.hatch.version]
-path = "src/semver_project/__init__.py"
+path = "src/calver_inc1_project/__init__.py"
 
 [tool.mypy]
 check_untyped_defs = true
@@ -135,7 +138,7 @@ warn_unused_ignores = true
 ignore_errors = true
 ignore_missing_imports = true
 module = [
-  "semver_project.*.migrations.*",
+  "calver_inc1_project.*.migrations.*",
   "tests.*"
 ]
 
@@ -161,6 +164,7 @@ exclude = [
   ".git",
   ".github",
   ".hg",
+  ".mypy_cache",
   ".ruff_cache",
   ".svn",
   ".tox",
@@ -173,18 +177,19 @@ exclude = [
   "node_modules",
   "venv"
 ]
+extend-include = ["*.pyi?"]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "I"]
 ignore = ["E501", "E741"]  # temporary
 indent-width = 4
 # Same as Black.
 line-length = 88
-per-file-ignores = {}
 select = [
   "B",  # flake8-bugbear
   "E",  # Pycodestyle
   "F",  # Pyflakes
-  "I"  # isort
+  "I",  # isort
+  "UP"  # pyupgrade
 ]
 # Assume Python >3.8.
 target-version = "py38"
@@ -200,5 +205,9 @@ quote-style = "double"
 
 [tool.ruff.isort]
 force-single-line = true
-known-first-party = ["semver_project"]
+known-first-party = ["calver_inc1_project"]
 required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]

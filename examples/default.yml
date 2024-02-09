@@ -1,6 +1,4 @@
-admin_email: admin@example.com
 author_name: John Doe
-default_from_email: johndoe@example.com
+author_email: johndoe@example.com
 github_owner: example_owner
-project_name: default
-sentry_dsn: https://example.com
+package_name: semver-project

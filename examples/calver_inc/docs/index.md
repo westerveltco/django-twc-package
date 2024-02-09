@@ -5,6 +5,7 @@
 ```{toctree}
 :hidden:
 :maxdepth: 3
+:caption: Development
 
-just.md
+development/just.md
 ```

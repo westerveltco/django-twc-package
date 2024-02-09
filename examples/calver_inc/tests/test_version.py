@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from semver_project import __version__
+from calver_inc1_project import __version__
 
 
 def test_version():
