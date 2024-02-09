@@ -51,6 +51,10 @@ To use this template, you will need to install [Copier](https://copier.readthedo
 copier copy gh:westerveltco/django-twc-package <destination>
 ```
 
+## Examples
+
+Examples are provided in the [`examples`](examples) directory.
+
 ## Contributing
 
 As this template is mainly for internal use at The Westervelt Company, we do not generally accept contributions from external sources. However, if you have any suggestions or issues, please feel free to open an issue or pull request.

@@ -1,0 +1,204 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [
+  {name = "John Doe", email = "johndoe@example.com"}
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython"
+]
+dependencies = [
+  "django>=3.2",
+]
+description = "An example Django package"
+dynamic = ["version"]
+keywords = []
+license = {file = "LICENSE"}
+name = "semver-project"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = [
+  "bumpver",
+  "coverage[toml]",
+  "django-stubs",
+  "django-stubs-ext",
+  "faker",
+  "hatch",
+  "mypy",
+  "model-bakery",
+  "nox",
+  "pytest",
+  "pytest-cov",
+  "pytest-django",
+  "pytest-randomly",
+  "pytest-reverse",
+  "pytest-xdist"
+]
+docs = [
+  "cogapp",
+  "furo",
+  "myst-parser",
+  "sphinx",
+  "sphinx-autobuild",
+  "sphinx-copybutton",
+  "sphinx-inline-tabs"
+]
+lint = ["pre-commit"]
+
+[project.urls]
+Documentation = "https://semver-project.westervelt.dev/"
+Issues = "https://github.com/example_owner/semver-project/issues"
+Source = "https://github.com/example_owner/semver-project"
+
+[tool.bumpver]
+commit = true
+commit_message = ":bookmark: bump version {old_version} -> {new_version}"
+current_version = "2024.1"
+push = false  # set to false for CI
+tag = true
+version_pattern = "YYYY.INC1"
+
+[tool.bumpver.file_patterns]
+"semver_project/__init__.py" = [
+  '__version__ = "{version}"'
+]
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if DEBUG:",
+  "if not DEBUG:",
+  "if settings.DEBUG:",
+  "if TYPE_CHECKING:",
+  'def __str__\(self\)\s?\-?\>?\s?\w*\:'
+]
+fail_under = 75
+
+[tool.coverage.run]
+omit = [
+  "src/semver_project/migrations/*",
+  "tests/*"
+]
+source = ["semver_project"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+strict_settings = false
+
+[tool.hatch.build]
+exclude = [
+  ".*",
+  "Justfile"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/semver_project"]
+
+[tool.hatch.version]
+path = "src/semver_project/__init__.py"
+
+[tool.mypy]
+check_untyped_defs = true
+exclude = "docs/.*\\.py$"
+mypy_path = "src/"
+no_implicit_optional = true
+plugins = [
+  "mypy_django_plugin.main"
+]
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_errors = true
+ignore_missing_imports = true
+module = [
+  "semver_project.*.migrations.*",
+  "tests.*",
+]
+
+[tool.mypy_django_plugin]
+ignore_missing_model_attributes = true
+
+[tool.pytest.ini_options]
+addopts = "--create-db -n auto --dist loadfile --doctest-modules"
+django_find_project = false
+norecursedirs = ".* bin build dist *.egg htmlcov logs node_modules templates venv"
+python_files = "tests.py test_*.py *_tests.py"
+pythonpath = "src"
+testpaths = ["tests"]
+
+[tool.ruff]
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+# Exclude a variety of commonly ignored directories.
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".github",
+  ".hg",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "build",
+  "dist",
+  "migrations",
+  "node_modules",
+  "venv"
+]
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F", "I"]
+ignore = ["E501", "E741"]  # temporary
+indent-width = 4
+# Same as Black.
+line-length = 88
+per-file-ignores = {}
+select = [
+  "B",  # flake8-bugbear
+  "E",  # Pycodestyle
+  "F",  # Pyflakes
+  "I"  # isort
+]
+# Assume Python >3.8.
+target-version = "py38"
+unfixable = []
+
+[tool.ruff.format]
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+[tool.ruff.isort]
+force-single-line = true
+known-first-party = ["semver_project"]
+required-imports = ["from __future__ import annotations"]
