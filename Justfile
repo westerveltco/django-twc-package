@@ -3,8 +3,13 @@ set dotenv-load := true
 @_default:
     just --list
 
-generate-example DATA_FILE:
+_generate-example DATA_FILE:
     rye run copier copy -r HEAD . {{ trim_end_match(DATA_FILE, '.yml') }} --force --data-file {{ DATA_FILE }}
+
+@generate-examples:
+    for file in `ls examples/*.yml`; do \
+        just _generate-example $file; \
+    done
 
 # ----------------------------------------------------------------------
 # UTILS
