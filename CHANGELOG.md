@@ -17,6 +17,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.3]
+
+### Added
+
+- A new `generate-examples` command to the `Justfile` for generating all of the examples at once.
+
+### Changed
+
+- Added a few missing configuration settings to the `pyproject.toml` file.
+
 ## [2024.2]
 
 ### Changed
@@ -34,10 +44,11 @@ Initial release! 🎉
 - Initial tests.
 - Initial CI/CD (GitHub Actions).
 
-### New Contributors!
+### New Contributors
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.2...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.3...HEAD
+[2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
