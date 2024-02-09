@@ -1,0 +1,5 @@
+author_name: John Doe
+author_email: johndoe@example.com
+github_owner: example_owner
+package_name: semver-project
+versioning_scheme: "CalVer (YYYY.MM.INC1)"
