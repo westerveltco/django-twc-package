@@ -1,27 +1,133 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+authors = [
+  {name = "{{ author_name }}", email = "{{ author_email }}"}
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: Django",
+  {%- for django_version in django_versions %}
+  "Framework :: Django :: {{ django_version }}",
+  {%- endfor %}
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  {%- for python_version in python_versions %}
+  "Programming Language :: Python :: {{ python_version }}",
+  {%- endfor %}
+  "Programming Language :: Python :: Implementation :: CPython"
+]
+dependencies = [
+  "django>={{ django_min_version }}",
+]
+description = "{{ package_description }}"
+dynamic = ["version"]
+keywords = []
+license = {file = "LICENSE"}
+name = "{{ package_name }}"
+readme = "README.md"
+requires-python = ">={{ python_min_version }}"
+
+[project.optional-dependencies]
+dev = [
+  "bumpver",
+  "coverage[toml]",
+  "django-stubs",
+  "django-stubs-ext",
+  "faker",
+  "hatch",
+  "mypy",
+  "model-bakery",
+  "nox",
+  "pytest",
+  "pytest-cov",
+  "pytest-django",
+  "pytest-randomly",
+  "pytest-reverse",
+  "pytest-xdist"
+]
+docs = [
+  "cogapp",
+  "furo",
+  "myst-parser",
+  "sphinx",
+  "sphinx-autobuild",
+  "sphinx-copybutton",
+  "sphinx-inline-tabs"
+]
+lint = ["pre-commit"]
+
+[project.urls]
+Documentation = "https://{{ package_name }}.{{ docs_domain }}/"
+Issues = "https://github.com/{{ github_owner }}/{{ github_repo }}/issues"
+Source = "https://github.com/{{ github_owner }}/{{ github_repo }}"
+
 [tool.bumpver]
 commit = true
 commit_message = ":bookmark: bump version {old_version} -> {new_version}"
 current_version = "{{ current_version }}"
 push = false  # set to false for CI
 tag = true
-version_pattern = "YYYY.MM.INC1"
+{%- if versioning_scheme == "SemVer" %}
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
+{%- else %}
+{#- Grab the characters witin the parentheses, e.g. YYYY.INC1 #}
+{%- set pattern_start = versioning_scheme.find('(') + 1 %}
+{%- set pattern_end = versioning_scheme.find(')') %}
+version_pattern = "{{ versioning_scheme[pattern_start:pattern_end] }}"
+{%- endif %}
 
 [tool.bumpver.file_patterns]
 "{{ module_name }}/__init__.py" = [
   '__version__ = "{version}"'
 ]
 
-[tool.django-stubs]
-django_settings_module = "{{ module_name }}.settings"
+[tool.coverage.paths]
+source = ["src"]
 
-[tool.djlint]
-indent = 2
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if DEBUG:",
+  "if not DEBUG:",
+  "if settings.DEBUG:",
+  "if TYPE_CHECKING:",
+  'def __str__\(self\)\s?\-?\>?\s?\w*\:'
+]
+fail_under = 75
+
+[tool.coverage.run]
+omit = [
+  "src/{{ module_name }}/migrations/*",
+  "tests/*"
+]
+source = ["{{ module_name }}"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+strict_settings = false
+
+[tool.hatch.build]
+exclude = [
+  ".*",
+  "Justfile"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/{{ module_name }}"]
+
+[tool.hatch.version]
+path = "src/{{ module_name }}/__init__.py"
 
 [tool.mypy]
 check_untyped_defs = true
-files = [
-  "{{ module_name }}",
-]
+exclude = "docs/.*\\.py$"
+mypy_path = "src/"
 no_implicit_optional = true
 plugins = [
   "mypy_django_plugin.main"
@@ -32,34 +138,22 @@ warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
 ignore_errors = true
+ignore_missing_imports = true
 module = [
   "{{ module_name }}.*.migrations.*",
   "tests.*",
-]
-
-[[tool.mypy.overrides]]
-ignore_missing_imports = true
-module = [
-  "allauth.*",
-  "debug_toolbar.*",
-  "django_filters.*",
-  "django_q.*",
-  "djclick.*",
-  "gunicorn.*",
-  "health_check.*",
-  {%- if include_weasyprint %}
-  "weasyprint.*",
-  {%- endif %}
 ]
 
 [tool.mypy_django_plugin]
 ignore_missing_model_attributes = true
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "{{ module_name }}.settings"
-addopts = "--reuse-db -n auto --dist loadfile"
-norecursedirs = ".* bin build dist *.egg htmlcov logs node_modules static templates venv"
+addopts = "--create-db -n auto --dist loadfile --doctest-modules"
+django_find_project = false
+norecursedirs = ".* bin build dist *.egg htmlcov logs node_modules templates venv"
 python_files = "tests.py test_*.py *_tests.py"
+pythonpath = "src"
+testpaths = ["tests"]
 
 [tool.ruff]
 # Allow unused variables when underscore-prefixed.
@@ -82,7 +176,6 @@ exclude = [
   "dist",
   "migrations",
   "node_modules",
-  "static",
   "venv"
 ]
 # Allow autofix for all enabled rules (when `--fix`) is provided.
@@ -98,8 +191,8 @@ select = [
   "F",  # Pyflakes
   "I"  # isort
 ]
-# Assume Python 3.11.
-target-version = "py311"
+# Assume Python >{{ python_min_version }}.
+target-version = "py{{ python_min_version | replace('.', '') }}"
 unfixable = []
 
 [tool.ruff.format]

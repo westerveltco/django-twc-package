@@ -1,0 +1,119 @@
+from __future__ import annotations
+
+import os
+from pathlib import Path
+
+import nox
+{% for python_version in python_versions %}
+PY{{ python_version | replace(".", "") }} = "{{ python_version }}"
+{%- endfor %}
+PY_VERSIONS = [{% for python_version in python_versions%}PY{{ python_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
+PY_DEFAULT = PY_VERSIONS[0]
+PY_LATEST = PY_VERSIONS[-1]
+{% for django_version in django_versions %}
+DJ{{ django_version | replace(".", "") }} = "{{ django_version }}"
+{%- endfor %}
+{%- if test_django_main %}
+DJMAIN = "main"
+DJMAIN_MIN_PY = PY310
+{%- endif %}
+DJ_VERSIONS = [{% for django_version in django_versions %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}{% if test_django_main %}, DJMAIN{% endif %}]
+DJ_LTS = [{% for django_version in django_lts_versions %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
+DJ_DEFAULT = DJ_LTS[0]
+DJ_LATEST = DJ_VERSIONS[-{% if test_django_main %}2{% else %}1{% endif %}]
+
+
+def version(ver: str) -> tuple[int, ...]:
+    """Convert a string version to a tuple of ints, e.g. "3.10" -> (3, 10)"""
+    return tuple(map(int, ver.split(".")))
+
+
+def should_skip(python: str, django: str) -> bool:
+    """Return True if the test should be skipped"""
+    {%- if test_django_main %}
+    if django == DJMAIN and version(python) < version(DJMAIN_MIN_PY):
+        # Django main requires Python 3.10+
+        return True
+    {% endif %}
+    {%- if "3.2" in django_versions %}
+    if django == DJ32 and version(python) >= version(PY312):
+        # Django 3.2 requires Python < 3.12
+        return True
+    {% endif %}
+    {%- if "5.0" in django_versions %}
+    if django == DJ50 and version(python) < version(PY310):
+        # Django 5.0 requires Python 3.10+
+        return True
+    {% endif %}
+    return False
+
+
+@nox.session
+def test(session):
+    session.notify(f"tests(python='{PY_DEFAULT}', django='{DJ_DEFAULT}')")
+
+
+@nox.session
+@nox.parametrize(
+    "python,django",
+    [
+        (python, django)
+        for python in PY_VERSIONS
+        for django in DJ_VERSIONS
+        if not should_skip(python, django)
+    ],
+)
+def tests(session, django):
+    session.install(".[dev]")
+
+    {% if test_django_main -%}
+    if django == DJMAIN:
+        session.install("https://github.com/django/django/archive/refs/heads/main.zip")
+    else:
+        session.install(f"django=={django}")
+    {%- else %}
+    session.install(f"django=={django}")
+    {%- endif %}
+
+    session.run("python", "-m", "pytest")
+
+
+@nox.session
+def coverage(session):
+    session.install(".[dev]")
+    session.run("python", "-m", "pytest", "--cov={{ module_name }}")
+
+    try:
+        summary = os.environ["GITHUB_STEP_SUMMARY"]
+        with Path(summary).open("a") as output_buffer:
+            output_buffer.write("")
+            output_buffer.write("### Coverage\n\n")
+            output_buffer.flush()
+            session.run(
+                "python",
+                "-m",
+                "coverage",
+                "report",
+                "--skip-covered",
+                "--skip-empty",
+                "--format=markdown",
+                stdout=output_buffer,
+            )
+    except KeyError:
+        session.run(
+            "python", "-m", "coverage", "html", "--skip-covered", "--skip-empty"
+        )
+
+    session.run("python", "-m", "coverage", "report")
+
+
+@nox.session
+def lint(session):
+    session.install(".[lint]")
+    session.run("python", "-m", "pre_commit", "run", "--all-files")
+
+
+@nox.session
+def mypy(session):
+    session.install(".[dev]")
+    session.run("python", "-m", "mypy", ".")
