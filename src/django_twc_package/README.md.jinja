@@ -1,0 +1,42 @@
+# {{ package_name }}
+
+[![PyPI](https://img.shields.io/pypi/v/{{ package_name }})](https://pypi.org/project/{{ package_name }}/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/{{ package_name }})
+![Django Version](https://img.shields.io/badge/django-{% for django_version in django_versions %}{{ django_version }}{% if not loop.last %}%20%7C%20{% endif %}{% endfor %}
+-%2344B78B?labelColor=%23092E20)
+<!-- https://shields.io/badges -->
+<!-- django-{% for django_version in django_versions %}{{ django_version }}{% if not loop.last %} | {% endif %}{% endfor %}-#44B78B -->
+<!-- labelColor=%23092E20 -->
+
+## Requirements
+
+- Python {% for python_version in python_versions %}{{ python_version }}{% if not loop.last %}, {% endif %}{% endfor %}
+- Django {% for django_version in django_versions %}{{ django_version }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+## Getting Started
+
+1. Install the package from PyPI:
+
+```bash
+python -m pip install {{ package_name }}
+```
+
+2. Add the app to your Django project's `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    ...,
+    "{{ module_name }}",
+    ...,
+]
+```
+
+## Usage
+
+## Documentation
+
+Please refer to the [documentation](https://{{ package_name }}.{{ docs_domain }}/) for more information.
+
+## License
+
+`{{ package_name }}` is licensed under the MIT license. See the [`LICENSE`](LICENSE) file for more information.

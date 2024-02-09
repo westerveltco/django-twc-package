@@ -1,0 +1,130 @@
+# ----------------------------------------------------------------------
+# META
+# ----------------------------------------------------------------------
+
+_answers_file: .copier/package.yml
+_min_copier_version: "9.1.0"
+_subdirectory: src/django_twc_package
+
+template_version:
+  default: "2024.1"
+  when: false
+
+# ----------------------------------------------------------------------
+# GENERAL
+# ----------------------------------------------------------------------
+
+package_name:
+  type: str
+  help: What is the name of the package?
+  default: "django-example-package"
+
+package_description:
+  type: str
+  help: What is the description of the package?
+  default: "An example Django package"
+
+module_name:
+  type: str
+  help: What is the name of the package's module?
+  default: "{{ package_name.lower() |  replace('-', '_') | replace(' ', '_') | trim() }}"
+
+author_name:
+  type: str
+  help: What is the name of the primary author/maintainer?
+  validator: "{% if author_name == '' %}You must provide an name.{% endif %}"
+
+author_email:
+  type: str
+  help: What is the email of the primary author/maintainer?
+  validator: "{% if author_email == '' %}You must provide an email.{% endif %}"
+
+github_owner:
+  type: str
+  help: Who is the GitHub owner? Can either be a user or organization.
+  validator: "{% if github_owner == '' %}You must provide an GitHub owner.{% endif %}"
+
+github_repo:
+  type: str
+  help: What is the name of the GitHub repo?
+  default: "{{ package_name | trim() }}"
+
+docs_domain:
+  type: str
+  help: What is the base domain where the documentation will be hosted?
+  choices:
+    - "readthedocs.io"
+    - "westervelt.dev"
+  default: "westervelt.dev"
+
+# ----------------------------------------------------------------------
+# VERSIONS
+# ----------------------------------------------------------------------
+
+versioning_scheme:
+  type: str
+  help: What versioning scheme will the package use?
+  choices:
+    - "SemVer"
+    - "CalVer (YYYY.INC1)"
+    - "CalVer (YYYY.MM.INC1)"
+  default: "SemVer"
+
+current_version:
+  type: str
+  help: What is the current version of the project?
+  default: |-
+    {% if versioning_scheme == "SemVer" -%}
+      0.1.0
+    {%- elif versioning_scheme == "CalVer (YYYY.INC1)" -%}
+      {{ '%Y' | strftime }}.1
+    {%- else -%}
+      {{ '%Y.%-m' | strftime }}.1
+    {%- endif %}
+
+python_versions:
+  type: str
+  help: Select all the versions of Python that should be supported.
+  multiselect: true
+  choices:
+    "3.8": "3.8"
+    "3.9": "3.9"
+    "3.10": "3.10"
+    "3.11": "3.11"
+    "3.12": "3.12"
+  default: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+python_min_version:
+  when: false
+  default: "{{ python_versions | first }}"
+
+python_max_version:
+  when: false
+  default: "{{ python_versions | last }}"
+
+django_versions:
+  type: str
+  help: Select all the versions of Django that should be supported.
+  multiselect: true
+  choices:
+    "3.2 (LTS)": "3.2"
+    "4.2 (LTS)": "4.2"
+    "5.0": "5.0"
+  default: ["3.2", "4.2", "5.0"]
+
+django_min_version:
+  when: false
+  default: "{{ django_versions | first }}"
+
+django_max_version:
+  when: false
+  default: "{{ django_versions | last }}"
+
+django_lts_versions:
+  when: false
+  default: "{% for django_version in django_versions %}{% if django_version in '3.2,4.2' %}{{ version }}{% endif %}{% endfor %}"
+
+test_django_main:
+  type: bool
+  help: Test against the Django `main` branch?
+  default: true
