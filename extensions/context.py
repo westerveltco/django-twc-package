@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from copier_templates_extensions import ContextHook
 
 DJMAIN_MIN_PY = "3.10"
@@ -38,13 +40,17 @@ class NoxfileVersions(ContextHook):
         context["nox_python_versions"] = self.get_nox_version_list(
             versions=python_versions, prefix="PY"
         )
+
+        lts_versions = ", ".join(
+            [f'DJ{v.replace(".", "")}' for v in django_versions if v.endswith(".2")]
+        )
         context["nox_django_versions"] = self.get_nox_version_list(
             versions=django_versions,
             prefix="DJ",
             pre_versions=f"\nDJMAIN_MIN_PY = PY{DJMAIN_MIN_PY.replace('.', '')}"
             if test_django_main
             else None,
-            post_versions=f"\nDJ_LTS = [{', '.join([f'DJ{v.replace(".", "")}' for v in django_versions if v.endswith('.2')])}]",
+            post_versions=f"\nDJ_LTS = [{lts_versions}]",
             default_versions_postfix="LTS",
             latest_index=-2 if test_django_main else -1,
         )
