@@ -3,6 +3,14 @@ set dotenv-load := true
 @_default:
     just --list
 
+# ----------------------------------------------------------------------
+# RELEASING
+# ----------------------------------------------------------------------
+
+bump:
+    rye run bumpver update
+    @just generate-examples && git add . && git commit -m "regenerate examples"
+
 _generate-example DATA_FILE:
     #!/usr/bin/env bash
     DIRECTORY="{{ trim_end_match(DATA_FILE, '.yml') }}"
