@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.8]
+
 ### Fixed
 
 - Added missing `SECRET_KEY` setting to `tests/settings.py` to fix the `test` and `testall` commands on certain Django versions.
@@ -87,7 +89,8 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.7...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.8...HEAD
+[2024.8]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.8
 [2024.7]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.7
 [2024.6]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.6
 [2024.5]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.5
