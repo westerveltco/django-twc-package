@@ -51,6 +51,36 @@ To use this template, you will need to install [Copier](https://copier.readthedo
 copier copy gh:westerveltco/django-twc-package <destination>
 ```
 
+After running the above command, you will be prompted to fill in some information about your package. Once you have filled in the necessary information, Copier will generate the package for you.
+
+Once the package has been generated, you should create or update the `tests/conftest.py` file to include the following:
+
+```python
+from __future__ import annotations
+
+import logging
+
+from django.conf import settings
+
+from .settings import DEFAULT_SETTINGS
+
+pytest_plugins = []  # type: ignore
+
+
+def pytest_configure(config):
+    logging.disable(logging.CRITICAL)
+
+    settings.configure(
+        **DEFAULT_SETTINGS,
+        **TEST_SETTINGS,
+    )
+
+
+TEST_SETTINGS = {}
+```
+
+`tests.settings.DEFAULT_SETTINGS` contains some common default settings, specifically chosen to ensure a speedy test suite. Any settings that are specific to your package should be added to `tests.conftest.TEST_SETTINGS`. By keeping these separate, it should allow for future updates to this template to be easily merged into your package.
+
 ## Examples
 
 Examples are provided in the [`examples`](examples) directory.
