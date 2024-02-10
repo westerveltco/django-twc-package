@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Moved the common test settings from plugin to `tests/settings.py` and added a note to the installation notes in README.
 
+### Removed
+
+- Removed the `tests/plugins/dj_settings.py` file.
+
 ## [2024.4]
 
 ### Changed
