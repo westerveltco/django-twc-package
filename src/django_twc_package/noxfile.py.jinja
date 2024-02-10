@@ -4,23 +4,10 @@ import os
 from pathlib import Path
 
 import nox
-{% for python_version in python_versions %}
-PY{{ python_version | replace(".", "") }} = "{{ python_version }}"
-{%- endfor %}
-PY_VERSIONS = [{% for python_version in python_versions%}PY{{ python_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
-PY_DEFAULT = PY_VERSIONS[0]
-PY_LATEST = PY_VERSIONS[-1]
-{% for django_version in django_versions %}
-DJ{{ django_version | replace(".", "") }} = "{{ django_version }}"
-{%- endfor %}
-{%- if test_django_main %}
-DJMAIN = "main"
-DJMAIN_MIN_PY = PY310
-{%- endif %}
-DJ_VERSIONS = [{% for django_version in django_versions %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}{% if test_django_main %}, DJMAIN{% endif %}]
-DJ_LTS = [{% for django_version in django_lts_versions.split(',') %}DJ{{ django_version | replace(".", "") }}{% if not loop.last %}, {% endif %}{% endfor %}]
-DJ_DEFAULT = DJ_LTS[0]
-DJ_LATEST = DJ_VERSIONS[-{% if test_django_main %}2{% else %}1{% endif %}]
+
+{{ nox_python_versions }}
+
+{{ nox_django_versions }}
 
 
 def version(ver: str) -> tuple[int, ...]:
