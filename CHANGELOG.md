@@ -17,6 +17,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- `generate-examples` command now removes the previous example directory before generating an example.
+- Moved common test settings to separate plugin at `tests/plugins/dj_settings.py`.
+
+### Removed
+
+- Removed the dummy `tests/settings.py`.
+
 ## [2024.3]
 
 ### Added
