@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- Moved the common test settings from plugin to `tests.settings.py` and added a note to the installation notes in README about using.
+- Moved the common test settings from plugin to `tests/settings.py` and added a note to the installation notes in README.
 
 ## [2024.4]
 
