@@ -2,15 +2,18 @@ from __future__ import annotations
 
 import logging
 
-from django.conf import settings
+import pytest
+from django.test.utils import override_settings
 
-pytest_plugins = []  # type: ignore
 
-
-def pytest_configure(_):
+def pytest_configure(config):
     logging.disable(logging.CRITICAL)
 
-    settings.configure(**TEST_SETTINGS)
+
+@pytest.fixture(autouse=True)
+def default_test_settings():
+    with override_settings(**TEST_SETTINGS):
+        yield
 
 
 TEST_SETTINGS = {
@@ -28,9 +31,6 @@ TEST_SETTINGS = {
         },
     },
     "EMAIL_BACKEND": "django.core.mail.backends.locmem.EmailBackend",
-    "INSTALLED_APPS": [
-        "semver_project",
-    ],
     "LOGGING_CONFIG": None,
     "PASSWORD_HASHERS": [
         "django.contrib.auth.hashers.MD5PasswordHasher",
