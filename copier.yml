@@ -3,6 +3,10 @@
 # ----------------------------------------------------------------------
 
 _answers_file: .copier/package.yml
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/context.py:MinMaxVersion
+  - extensions/context.py:NoxfileVersions
 _min_copier_version: "9.1.0"
 _subdirectory: src/django_twc_package
 
@@ -94,14 +98,6 @@ python_versions:
     "3.12": "3.12"
   default: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
-python_min_version:
-  when: false
-  default: "{{ python_versions | first }}"
-
-python_max_version:
-  when: false
-  default: "{{ python_versions | last }}"
-
 django_versions:
   type: str
   help: Select all the versions of Django that should be supported.
@@ -111,18 +107,6 @@ django_versions:
     "4.2 (LTS)": "4.2"
     "5.0": "5.0"
   default: ["3.2", "4.2", "5.0"]
-
-django_min_version:
-  when: false
-  default: "{{ django_versions | first }}"
-
-django_max_version:
-  when: false
-  default: "{{ django_versions | last }}"
-
-django_lts_versions:
-  when: false
-  default: "{% set lts_versions = [] %}{% for version in django_versions %}{% if version in ['3.2', '4.2'] %}{% set lts_versions = lts_versions.append(version) %}{% endif %}{% endfor %}{{ lts_versions|join(',') }}"
 
 test_django_main:
   type: bool
