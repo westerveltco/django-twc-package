@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.4]
+
 ### Changed
 
 - `generate-examples` command now removes the previous example directory before generating an example.
@@ -57,7 +59,8 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.3...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.4...HEAD
+[2024.4]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.4
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
