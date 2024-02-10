@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Added additional descriptions to example headings in `CHANGELOG.md`.
+- `test` and `testall` Justfile commands now can take positional arguments to run specific tests.
+- `lint` Justfile command now runs the relevant `nox` command instead of `pre-commit` directly.
 
 ## [2024.5]
 
