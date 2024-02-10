@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.5]
+
 ### Changed
 
 - Moved the common test settings from plugin to `tests/settings.py` and added a note to the installation notes in README.
@@ -67,7 +69,8 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.4...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.5...HEAD
+[2024.5]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.5
 [2024.4]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.4
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
