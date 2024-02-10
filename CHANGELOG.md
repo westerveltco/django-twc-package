@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.7]
+
 ## Fixed
 
 - Added the correct Jinja escape tags so that the `test` and `testall` commands render correctly when generating a template.
@@ -81,7 +83,8 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.6...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.7...HEAD
+[2024.7]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.7
 [2024.6]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.6
 [2024.5]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.5
 [2024.4]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.4
