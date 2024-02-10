@@ -22,10 +22,10 @@ update:
 # ----------------------------------------------------------------------
 
 test *ARGS:
-    python -m nox --reuse-existing-virtualenvs --session "test" -- "{{ ARGS }}"
+    python -m nox --reuse-existing-virtualenvs --session "test" -- "{% raw %}{{ ARGS }}{% endraw %}"
 
 testall *ARGS:
-    python -m nox --reuse-existing-virtualenvs --session "tests" -- "{{ ARGS }}"
+    python -m nox --reuse-existing-virtualenvs --session "tests" -- "{% raw %}{{ ARGS }}{% endraw %}"
 
 coverage:
     python -m nox --reuse-existing-virtualenvs --session "coverage"
