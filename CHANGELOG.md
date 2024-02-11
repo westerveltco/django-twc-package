@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.9]
+
 ### Added
 
 - `just` is now installed when building documentation on Read the Docs.
@@ -98,7 +100,8 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.8...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.9...HEAD
+[2024.9]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.9
 [2024.8]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.8
 [2024.7]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.7
 [2024.6]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.6
