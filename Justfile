@@ -10,7 +10,7 @@ set dotenv-load := true
 _bump *ARGS:
     rye run bumpver update {{ ARGS }}
 
-create-release:
+create-release-pr:
     #!/usr/bin/env bash
     changes=$(git log $(git tag --sort=-creatordate | head -n 1)..HEAD --pretty=format:"- `%h`: %s")
     new_version=$(just _bump --dry 2>&1 | rg 'New Version' | awk '{print $5}')
