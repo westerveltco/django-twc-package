@@ -24,8 +24,10 @@ create-release-pr:
     pr_title=$(git log -1 --pretty=%s)
 
     just generate-examples
-    git add .
-    git commit -m "regenerate examples for version ${new_version}"
+    git add . && git commit -m "regenerate examples for version ${new_version}"
+
+    sed -i -e "/## \[Unreleased\]/ {s/## \[Unreleased\]/## [${new_version}] - ${release_date}/;i ## [Unreleased]\n\n}"
+    git add . && git commit -m "update CHANGELOG"
 
     git push --set-upstream origin "${release_branch}"
 
