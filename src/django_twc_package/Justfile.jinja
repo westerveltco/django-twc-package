@@ -107,7 +107,7 @@ copier-copy TEMPLATE_PATH DESTINATION_PATH=".":
 
 # update the project using a copier answers file
 copier-update ANSWERS_FILE *ARGS:
-    pipx run copier update --answers-file {% raw %}{{ ANSWERS_FILE }}{% endraw %} {% raw %}{{ ARGS }}{% endraw %}
+    pipx run copier update --trust --answers-file {% raw %}{{ ANSWERS_FILE }}{% endraw %} {% raw %}{{ ARGS }}{% endraw %}
 
 # loop through all answers files and update the project using copier
 @copier-update-all *ARGS:
