@@ -12,15 +12,16 @@ _bump *ARGS:
 
 create-release:
     #!/usr/bin/env bash
+    changes=$(git log $(git tag --sort=-creatordate | head -n 1)..HEAD --pretty=format:"- `%h`: %s")
     new_version=$(just _bump --dry 2>&1 | rg 'New Version' | awk '{print $5}')
     git checkout -b "release-v${new_version}"
     just _bump
     pr_title=$(git log -1 --pretty=%s)
     just generate-examples
     git add .
-    git commit -m "regenerate examples"
+    git commit -m "regenerate examples for version ${new_version}"
     git push --set-upstream origin "release-v${new_version}"
-    gh pr create --base main --head "release-v${new_version}" --title "${pr_title}" --body "This PR includes the changes for the new release v${new_version}."
+    gh pr create --base main --head "release-v${new_version}" --title "${pr_title}" --body "${changes}"
 
 _generate-example DATA_FILE:
     #!/usr/bin/env bash
