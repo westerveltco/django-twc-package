@@ -12,7 +12,7 @@ _bump *ARGS:
 
 create-release:
     #!/usr/bin/env bash
-    new_version=$(just _bump --dry | rg 'New Version' | awk '{print $4}')
+    new_version=$(just _bump --dry 2>&1 | rg 'New Version' | awk '{print $5}')
     git checkout -b "release-v${new_version}"
     just _bump
     pr_title=$(git log -1 --pretty=%s)
@@ -20,7 +20,7 @@ create-release:
     git add .
     git commit -m "regenerate examples"
     git push --set-upstream origin "release-v${new_version}"
-    gh pr create --base main --head "release-v${new_version}" --title "${pr_title}"--body "This PR includes the changes for the new release v${new_version}."
+    gh pr create --base main --head "release-v${new_version}" --title "${pr_title}" --body "This PR includes the changes for the new release v${new_version}."
 
 _generate-example DATA_FILE:
     #!/usr/bin/env bash
