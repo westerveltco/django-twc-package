@@ -101,7 +101,7 @@ lint:
 # COPIER
 # ----------------------------------------------------------------------
 
-# create a copier answers file
+# apply a copier template to project
 copier-copy TEMPLATE_PATH DESTINATION_PATH=".":
     pipx run copier copy {% raw %}{{ TEMPLATE_PATH }}{% endraw %} {% raw %}{{ DESTINATION_PATH }}{% endraw %}
 
@@ -111,4 +111,4 @@ copier-update ANSWERS_FILE *ARGS:
 
 # loop through all answers files and update the project using copier
 @copier-update-all *ARGS:
-    for file in `ls .copier-answers/`; do just copier-update .copier-answers/$file "{% raw %}{{ ARGS }}{% endraw %}"; done
+    for file in `ls .copier/`; do just copier-update .copier/$file "{% raw %}{{ ARGS }}{% endraw %}"; done
