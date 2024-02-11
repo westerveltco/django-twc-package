@@ -7,9 +7,19 @@ set dotenv-load := true
 # RELEASING
 # ----------------------------------------------------------------------
 
-bump:
-    rye run bumpver update
-    @just generate-examples && git add . && git commit -m "regenerate examples"
+_bump *ARGS:
+    rye run bumpver update {{ ARGS }}
+
+create-release:
+    new_version=$(just _bump --dry | rg 'New Version' | awk '{print $4}')
+    git checkout -b "release-v${new_version}"
+    just _bump
+    pr_title=$(git log -1 --pretty=%s)
+    @just generate-examples
+    git add .
+    git commit -m "regenerate examples"
+    git push --set-upstream origin "release-v${new_version}"
+    gh pr create --base main --head "release-v${new_version}" --title "${pr_title}"--body "This PR includes the changes for the new release v${new_version}."
 
 _generate-example DATA_FILE:
     #!/usr/bin/env bash
