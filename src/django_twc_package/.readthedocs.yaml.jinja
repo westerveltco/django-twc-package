@@ -4,8 +4,10 @@
 version: 2
 
 build:
-  apt_packages:
-    - just
+  jobs:
+    pre_build:
+      - asdf plugin add just && asdf install just latest && asdf global just latest
+      - just _cog
   os: ubuntu-22.04
   tools:
     python: "{{ python_max_version }}"
@@ -23,6 +25,3 @@ python:
       path: .
       extra_requirements:
         - docs
-  jobs:
-    pre_build:
-      - just _cog
