@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- `just` is now installed when building documentation on Read the Docs.
+- `just _cog` private command added to run the relevant docs through the `cog` tool. Useful for automatically generating documentation for cli tools such as `just`. Currently, only the `just` commands are documented, but this can be expanded in the future (e.g. `nox` or Django management commands).
+
 ### Changed
 
 - Moved generation of the lists Python and Django versions in `noxfile.py` from Jinja2 template logic to Jinja2 extensions using `copier-template-extensions`.
