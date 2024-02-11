@@ -11,11 +11,12 @@ _bump *ARGS:
     rye run bumpver update {{ ARGS }}
 
 create-release:
+    #!/usr/bin/env bash
     new_version=$(just _bump --dry | rg 'New Version' | awk '{print $4}')
     git checkout -b "release-v${new_version}"
     just _bump
     pr_title=$(git log -1 --pretty=%s)
-    @just generate-examples
+    just generate-examples
     git add .
     git commit -m "regenerate examples"
     git push --set-upstream origin "release-v${new_version}"
