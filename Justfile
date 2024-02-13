@@ -14,7 +14,7 @@ create-release-pr:
 
     # get changes since last tag for PR body
     # done first so none of the other commits in this script are included
-    changes=$(git log $(git tag --sort=-creatordate | head -n 1)..HEAD --pretty=format:"- `%h`: %s")
+    changes=$(git log $(git tag --sort=-creatordate | head -n 1)..HEAD --pretty=format:"- \`%h\`: %s" --reverse)
 
     # grab the newest version for release branch name and example generation commit message
     new_version=$(just _bump --dry 2>&1 | rg 'New Version' | awk '{print $5}')
@@ -35,7 +35,7 @@ create-release-pr:
     sed -i -e "0,/## \[Unreleased\]/s//## [${new_version}]/" $changelog
     sed -i -e "/## \[${new_version}\]/i ## [Unreleased]\n\n" $changelog
     # adjust link references at bottom of changelog
-    echo -e "[${new_version}]: ${repo_url}/releases/tag/v${new_version}\n" >> $changelog
+    echo -e "[${new_version}]: ${repo_url}/releases/tag/v${new_version}" >> $changelog
     sed -i -e "s|\[unreleased\]: ${repo_url}/compare/v.*...HEAD|\[unreleased\]: ${repo_url}/compare/v${new_version}...HEAD|" $changelog
     git add . && git commit -m "update CHANGELOG"
 
