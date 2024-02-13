@@ -101,12 +101,12 @@ Initial release! 🎉
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
 [unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.9...HEAD
-[2024.9]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.9
-[2024.8]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.8
-[2024.7]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.7
-[2024.6]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.6
-[2024.5]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.5
-[2024.4]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.4
-[2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
-[2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
+[2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
+[2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
+[2024.4]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.4
+[2024.5]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.5
+[2024.6]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.6
+[2024.7]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.7
+[2024.8]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.8
+[2024.9]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.9
