@@ -26,7 +26,14 @@ create-release-pr:
     just generate-examples
     git add . && git commit -m "regenerate examples for version ${new_version}"
 
-    sed -i -e "/## \[Unreleased\]/ {s/## \[Unreleased\]/## [${new_version}] - ${release_date}/;i ## [Unreleased]\n\n}"
+    repo_url=$(git remote get-url origin)
+    changelog="CHANGELOG.md"
+    # update unrelease section with new version and add new unreleased section
+    sed -i -e "0,/## \[Unreleased\]/s//## [${new_version}]/" $changelog
+    sed -i -e "/## \[${new_version}\]/i ## [Unreleased]\n\n" $changelog
+    # adjust link references at bottom of changelog
+    echo -e "[${new_version}]: ${repo_url}/releases/tag/v${new_version}\n" >> $changelog
+    sed -i -e "s|\[unreleased\]: ${repo_url}/compare/v.*...HEAD|\[unreleased\]: ${repo_url}/compare/v${new_version}...HEAD|" $changelog
     git add . && git commit -m "update CHANGELOG"
 
     git push --set-upstream origin "${release_branch}"
