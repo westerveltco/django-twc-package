@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- `create-release-pr` command from `Justfile` was removed and moved to a personal script.
+
 ### Fixed
 
 - Path to `just` command documentation in `_cog` command.
