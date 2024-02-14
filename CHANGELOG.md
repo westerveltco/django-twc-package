@@ -17,6 +17,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- All `pre-commit` hooks have been updated to use the latest versions of the tools.
+    - `django-upgrade` to 1.16.0
+    - `language-formatters-pre-commit-hooks` to v2.12.0
+    - `prettier` to v4.0.0-alpha.8
+    - `ruff-pre-commit` to 0.2.1
+    - `rustywind` to 0.21.0
+    - `validate-pyproject` to v0.16
+- `djhtml` has been swapped out in favor of `djLint` for HTML formatting.
+
 ## [2024.10]
 
 ### Removed
