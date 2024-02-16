@@ -51,7 +51,6 @@ jobs:
           python -m pip install --upgrade pip nox
 
       - name: Run tests
-        if: env.RUN_TESTS == 'true'
         run: |
           python -m nox --session "tests(python='${{ matrix.python-version }}', django='${{ matrix.django-version }}')"
 
