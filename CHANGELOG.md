@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+
+### Changed
+
+- Updated the `ruff` configuration from deprecated settings to the new `ruff` configuration.
+
 ## [2024.13]
 
 ### Fixed
