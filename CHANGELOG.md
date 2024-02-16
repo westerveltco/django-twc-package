@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.13]
+
 ### Fixed
 
 - Removed the unneeded `RUN_TESTS` environment variable from the GitHub Actions workflow.
@@ -138,7 +140,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.12...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.13...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -153,3 +155,5 @@ Initial release! 🎉
 [2024.11]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.11
 
 [2024.12]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.12
+
+[2024.13]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.13
