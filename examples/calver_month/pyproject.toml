@@ -80,6 +80,9 @@ tag = false
 version_pattern = "YYYY.MM.INC1"
 
 [tool.bumpver.file_patterns]
+".copier/package.yml" = [
+  'current_version: {version}'
+]
 "src/calver_mminc1_project/__init__.py" = [
   '__version__ = "{version}"'
 ]
