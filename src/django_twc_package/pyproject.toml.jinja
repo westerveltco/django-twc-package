@@ -85,6 +85,9 @@ version_pattern = "{{ versioning_scheme[pattern_start:pattern_end] }}"
 {%- endif %}
 
 [tool.bumpver.file_patterns]
+".copier/package.yml" = [
+  'current_version: {version}'
+]
 "src/{{ module_name }}/__init__.py" = [
   '__version__ = "{version}"'
 ]
