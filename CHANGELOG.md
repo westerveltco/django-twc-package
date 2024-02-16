@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Removed the unneeded `RUN_TESTS` environment variable from the GitHub Actions workflow.
+
 ## [2024.12]
 
 ### Added
