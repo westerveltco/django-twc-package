@@ -17,6 +17,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added the `current_version` in `.copier/package.yml` answers file to `bumpver` configuration.
+
+### Fixed
+
+- Fixed a bug with the Python and Django versions in `.pre-commit-config.yaml`.
+
 ## [2024.11]
 
 ### Changed
@@ -29,6 +37,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     - `rustywind` to 0.21.0
     - `validate-pyproject` to v0.16
 - `djhtml` has been swapped out in favor of `djLint` for HTML formatting.
+- `nox -l --json` is now used to generate GitHub Actions matrix for testing.
 
 ## [2024.10]
 
