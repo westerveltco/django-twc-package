@@ -156,9 +156,6 @@ Initial release! 🎉
 [2024.8]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.8
 [2024.9]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.9
 [2024.10]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.10
-
 [2024.11]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.11
-
 [2024.12]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.12
-
 [2024.13]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.13
