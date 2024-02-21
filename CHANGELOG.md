@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.14]
+
 ### Added
 
 - Now using [`westerveltco/setup-ci-action`](https://github.com/westereltco/setup-ci-action) for common Python and Node.js CI/CD setup. This action sets up a Python and Node.js environment with caching and installs all dependencies for a project.
@@ -149,7 +151,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.13...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.14...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -163,3 +165,4 @@ Initial release! 🎉
 [2024.11]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.11
 [2024.12]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.12
 [2024.13]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.13
+[2024.14]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.14
