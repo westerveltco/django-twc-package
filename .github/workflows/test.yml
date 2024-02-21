@@ -18,11 +18,13 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-      - uses: westerveltco/setup-ci-action@v0.1.2
+      - uses: westerveltco/setup-ci-action@v0
         with:
           python-version: "3.8"
-          python-requirements: "requirements-dev.lock"
+          python-requirements: requirements-dev.lock
 
       - name: Run tests
         run: |
