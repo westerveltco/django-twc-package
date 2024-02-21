@@ -44,6 +44,11 @@ jobs:
           python-version: "3.8"
           python-requirements: requirements-dev.lock
 
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@users.noreply.github.com"
+
       - name: Generate examples
         run: |
           just generate-examples
