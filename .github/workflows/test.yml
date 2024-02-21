@@ -18,8 +18,6 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
 
       - uses: westerveltco/setup-ci-action@v0
         with:
@@ -29,3 +27,24 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
+
+  examples:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: extractions/setup-just@v1
+
+      - uses: westerveltco/setup-ci-action@v0
+        with:
+          python-version: "3.8"
+          python-requirements: requirements-dev.lock
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@users.noreply.github.com"
+
+      - name: Generate examples
+        run: |
+          just generate-examples
