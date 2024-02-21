@@ -29,3 +29,21 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
+
+  examples:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: extractions/setup-just@v1
+
+      - uses: westerveltco/setup-ci-action@v0
+        with:
+          python-version: "3.8"
+          python-requirements: requirements-dev.lock
+
+      - name: Generate examples
+        run: |
+          just generate-examples
