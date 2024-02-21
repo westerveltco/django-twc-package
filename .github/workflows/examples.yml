@@ -23,7 +23,7 @@ jobs:
 
       - uses: extractions/setup-just@v1
 
-      - uses: westerveltco/setup-ci-action@v0
+      - uses: westerveltco/setup-ci-action@3c7333d
         with:
           python-version: "3.8"
           python-requirements: requirements-dev.lock
