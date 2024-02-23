@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 -   Now using `uv` for dependency management in template.
 
+### Fixed
+
+-   Fixed alignment of badges in docs index.
+
 ## [2024.14]
 
 ### Added
