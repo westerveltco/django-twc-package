@@ -9,7 +9,7 @@ set dotenv-load := true
 
 bootstrap:
     @just pup
-    python -m uv pip install --editable 'calver-mminc1-project[dev] @ .'
+    python -m uv pip install --editable '.[dev]'
 
 pup:
     python -m pip install --upgrade pip uv
