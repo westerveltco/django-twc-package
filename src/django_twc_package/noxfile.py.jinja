@@ -5,6 +5,9 @@ from pathlib import Path
 
 import nox
 
+nox.options.default_venv_backend = "uv|virtualenv"
+nox.options.reuse_existing_virtualenvs = True
+
 {{ nox_python_versions }}
 
 {{ nox_django_versions }}
@@ -55,11 +58,13 @@ def test(session):
     ],
 )
 def tests(session, django):
-    session.install(".[dev]")
+    session.install("{{ package_name }}[dev] @ .")
 
     {% if test_django_main -%}
     if django == DJMAIN:
-        session.install("https://github.com/django/django/archive/refs/heads/main.zip")
+        session.install(
+            "django @ https://github.com/django/django/archive/refs/heads/main.zip"
+        )
     else:
         session.install(f"django=={django}")
     {%- else %}
@@ -71,7 +76,7 @@ def tests(session, django):
 
 @nox.session
 def coverage(session):
-    session.install(".[dev]")
+    session.install("{{ package_name }}[dev] @ .")
     session.run("python", "-m", "pytest", "--cov={{ module_name }}")
 
     try:
@@ -100,11 +105,11 @@ def coverage(session):
 
 @nox.session
 def lint(session):
-    session.install(".[lint]")
+    session.install("{{ package_name }}[lint] @ .")
     session.run("python", "-m", "pre_commit", "run", "--all-files")
 
 
 @nox.session
 def mypy(session):
-    session.install(".[dev]")
+    session.install("{{ package_name }}[dev] @ .")
     session.run("python", "-m", "mypy", ".")

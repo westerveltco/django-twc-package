@@ -3,6 +3,12 @@ set dotenv-load := true
 @_default:
     just --list
 
+bootstrap *ARGS:
+    rye sync {{ ARGS }}
+
+lock *ARGS:
+    rye lock {{ ARGS }}
+
 # ----------------------------------------------------------------------
 # EXAMPLES
 # ----------------------------------------------------------------------
@@ -38,4 +44,4 @@ fmt:
 
 # run pre-commit on all files
 lint:
-    pre-commit run --all-files
+    rye run pre-commit run --all-files
