@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+-   Python versions in template's `test.yml` GitHub Actions workflow are now correctly using the matrix version.
+-   Adjusted how the `uv` package is installed in the `setup-ci-action` GitHub Actions workflow.
+
 ## [2024.16]
 
 ### Fixed
