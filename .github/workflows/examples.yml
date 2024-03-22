@@ -28,6 +28,7 @@ jobs:
         with:
           python-version: "3.8"
           python-requirements: requirements-dev.lock
+          use-uv: true
 
       - name: Setup Git
         run: |
