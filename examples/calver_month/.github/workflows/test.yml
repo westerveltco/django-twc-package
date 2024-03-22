@@ -46,8 +46,9 @@ jobs:
 
       - uses: westerveltco/setup-ci-action@v0
         with:
-          python-version: 3.8
-          extra-python-dependencies: nox,uv
+          python-version: ${{ matrix.python-version }}
+          extra-python-dependencies: nox
+          use-uv: true
 
       - name: Run tests
         run: |
@@ -75,7 +76,8 @@ jobs:
       - uses: westerveltco/setup-ci-action@v0
         with:
           python-version: 3.8
-          extra-python-dependencies: nox,uv
+          extra-python-dependencies: nox
+          use-uv: true
 
       - name: Run mypy
         run: |
@@ -91,7 +93,8 @@ jobs:
       - uses: westerveltco/setup-ci-action@v0
         with:
           python-version: 3.8
-          extra-python-dependencies: nox,uv
+          extra-python-dependencies: nox
+          use-uv: true
 
       - name: Run coverage
         run: |
