@@ -50,6 +50,7 @@ jobs:
         with:
           python-version: {{ python_max_version }}
           extra-python-dependencies: hatch
+          use-uv: true
 
       - name: Build package
         run: |
