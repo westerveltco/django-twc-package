@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+-   Changed how the package within the template is referenced when bootstrapping in editable mode. Confusingly with `uv` in non-editable mode you must must specify the package name before the '@' symbol with a dot following, but in editable mode you do not need this and can reference it directly like you would expect.
+
 ## [2024.15]
 
 ### Changed
