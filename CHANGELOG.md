@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+-   Added the ability to pass in arguments to the `noxfile.py` test sessions.
+
 ## [2024.17]
 
 ### Fixed
