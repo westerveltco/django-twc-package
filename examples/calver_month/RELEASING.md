@@ -4,7 +4,7 @@ When it comes time to cut a new release, follow these steps:
 
 1. Create a new git branch off of `main` for the release.
 
-   Prefer the convention `release-<version>`, where `<version>` is the next incremental version number (e.g. `release-v2024.3.1` for version 2024.3.1).
+   Prefer the convention `release-<version>`, where `<version>` is the next incremental version number (e.g. `release-v2024.4.1` for version 2024.4.1).
 
    ```shell
    git checkout -b release-v<version>
@@ -58,7 +58,7 @@ When it comes time to cut a new release, follow these steps:
 
 6. Draft a [new release](https://github.com/example_owner/calver-mminc1-project/releases/new) on GitHub.
 
-   Use the version number with a leading `v` as the tag name (e.g. `v2024.3.1`).
+   Use the version number with a leading `v` as the tag name (e.g. `v2024.4.1`).
 
    Allow GitHub to generate the release title and release notes, using the 'Generate release notes' button above the text box. If this is a final release coming from a tagged release (or multiple tagged releases), make sure to copy the release notes from the previous tagged release(s) to the new release notes (after the release notes already generated for this final release).
 
