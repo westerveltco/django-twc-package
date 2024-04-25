@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 -   Added the ability to pass in arguments to the `noxfile.py` test sessions.
 
+### Removed
+
+-   `__template_version__` variable has been removed from the template package's `__init__.py` file. This is already being set in the copier answers file, so it is unneeded.
+
 ## [2024.17]
 
 ### Fixed
