@@ -20,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 -   Added the ability to pass in arguments to the `noxfile.py` test sessions.
+-   New `just install` command in template package's `Justfile` installs the package in editable mode with `[dev]` extras.
+
+### Changed
+
+-   `just bootstrap` command in template package's `Justfile` now calls `@just install` instead of `uv` installation command directly.
 
 ### Removed
 
