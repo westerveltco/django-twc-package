@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.18]
+
 ### Added
 
 -   Added the ability to pass in arguments to the `noxfile.py` test sessions.
@@ -188,7 +190,7 @@ Initial release! 🎉
 
 -   Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.17...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.18...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -206,3 +208,4 @@ Initial release! 🎉
 [2024.15]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.15
 [2024.16]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.16
 [2024.17]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.17
+[2024.18]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.18
