@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 -   Added the ability to pass in arguments to the `noxfile.py` test sessions.
 -   New `just install` command in template package's `Justfile` installs the package in editable mode with `[dev]` extras.
+-   Added a GitHub Action workflow for syncing labels across all projects using this template.
 
 ### Changed
 
