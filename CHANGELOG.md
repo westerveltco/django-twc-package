@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
--   Template now has a `CODEOWNERS` file for auto-assigning reviewers to PRs.
+-   Repo and template now have a `CODEOWNERS` file for auto-assigning reviewers to PRs.
 
 ## [2024.18]
 
