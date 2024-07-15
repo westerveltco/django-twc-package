@@ -9,7 +9,6 @@ authors = [
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Framework :: Django",
-  "Framework :: Django :: 3.2",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "License :: OSI Approved :: MIT License",
@@ -25,7 +24,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython"
 ]
 dependencies = [
-  "django>=3.2"
+  "django>=4.2"
 ]
 description = "An example Django package"
 dynamic = ["version"]

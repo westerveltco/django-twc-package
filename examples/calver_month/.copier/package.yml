@@ -1,11 +1,10 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 8ba4f62
+_commit: 006010d
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
 current_version: 2024.7.1
 django_versions:
-- '3.2'
 - '4.2'
 - '5.0'
 docs_domain: westervelt.dev
