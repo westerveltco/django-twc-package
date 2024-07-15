@@ -103,7 +103,6 @@ django_versions:
   help: Select all the versions of Django that should be supported.
   multiselect: true
   choices:
-    "3.2 (LTS)": "3.2"
     "4.2 (LTS)": "4.2"
     "5.0": "5.0"
   default: ["3.2", "4.2", "5.0"]
