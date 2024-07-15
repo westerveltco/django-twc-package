@@ -105,7 +105,7 @@ django_versions:
   choices:
     "4.2 (LTS)": "4.2"
     "5.0": "5.0"
-  default: ["3.2", "4.2", "5.0"]
+  default: ["4.2", "5.0"]
 
 test_django_main:
   type: bool
