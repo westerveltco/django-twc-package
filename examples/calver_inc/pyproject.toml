@@ -115,7 +115,12 @@ django_settings_module = "tests.settings"
 strict_settings = false
 
 [tool.djlint]
+blank_line_after_tag = "endblock,endpartialdef,extends,load"
+blank_line_before_tag = "block,partialdef"
+custom_blocks = "partialdef"
+ignore = "H031"  # Don't require `meta` tag keywords
 indent = 2
+profile = "django"
 
 [tool.hatch.build]
 exclude = [
@@ -136,7 +141,7 @@ exclude = [
   "tests",
   "migrations",
   "venv",
-  ".venv"
+  ".venv",
 ]
 mypy_path = "src/"
 no_implicit_optional = true
@@ -153,7 +158,7 @@ ignore_missing_imports = true
 module = [
   "*.migrations.*",
   "tests.*",
-  "docs.*"
+  "docs.*",
 ]
 
 [tool.mypy_django_plugin]
