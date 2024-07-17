@@ -137,7 +137,13 @@ path = "src/{{ module_name }}/__init__.py"
 
 [tool.mypy]
 check_untyped_defs = true
-exclude = "docs/.*\\.py$"
+exclude = [
+  "docs",
+  "tests",
+  "migrations",
+  "venv",
+  ".venv",
+]
 mypy_path = "src/"
 no_implicit_optional = true
 plugins = [
@@ -151,8 +157,9 @@ warn_unused_ignores = true
 ignore_errors = true
 ignore_missing_imports = true
 module = [
-  "{{ module_name }}.*.migrations.*",
-  "tests.*"
+  "*.migrations.*",
+  "tests.*",
+  "docs.*",
 ]
 
 [tool.mypy_django_plugin]
