@@ -141,7 +141,7 @@ exclude = [
   "tests",
   "migrations",
   "venv",
-  ".venv",
+  ".venv"
 ]
 mypy_path = "src/"
 no_implicit_optional = true
@@ -158,7 +158,7 @@ ignore_missing_imports = true
 module = [
   "*.migrations.*",
   "tests.*",
-  "docs.*",
+  "docs.*"
 ]
 
 [tool.mypy_django_plugin]
