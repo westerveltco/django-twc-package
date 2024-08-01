@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 - Removed `labels.yml` GitHub Action. This is now handled by a GitHub bot.
+- Removed use of `westerveltco/setup-ci-action` in favor of just inlining what that action does.
 
 ## [2024.22]
 
