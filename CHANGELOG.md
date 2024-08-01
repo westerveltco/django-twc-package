@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- In preparation of it's upcoming release, Python 3.13 is now available as an option when generating template.
+
 ### Removed
 
 - Removed `labels.yml` GitHub Action. This is now handled by a GitHub bot.
