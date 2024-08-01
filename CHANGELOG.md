@@ -26,6 +26,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Reworded two headers in the template README to better reflect their purpose.
 
+### Removed
+
+- Removed unused Django 3.2 section from `should_skip` function in template's `noxfile.py`.
+
 ## [2024.21]
 
 ### Changed
