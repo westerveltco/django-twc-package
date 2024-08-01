@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- Removed `labels.yml` GitHub Action. This is now handled by a GitHub bot.
+
 ## [2024.22]
 
 ### Added
