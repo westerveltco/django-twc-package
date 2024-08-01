@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - Reworded two headers in the template README to better reflect their purpose.
+- When cutting a release via `release.yml` GitHub Action workflow, run test suite before publishing package to PyPI. Previously the CLI tools `gh` and `jq` were used to check the most recent run of the test suite.
 
 ### Removed
 
