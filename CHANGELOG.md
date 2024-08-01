@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.22]
+
 ### Added
 
 - Added ruff to template's `pyproject.toml` under dev extras.
@@ -223,7 +225,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.21...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.22...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -245,3 +247,4 @@ Initial release! 🎉
 [2024.19]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.19
 [2024.20]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.20
 [2024.21]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.21
+[2024.22]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.22
