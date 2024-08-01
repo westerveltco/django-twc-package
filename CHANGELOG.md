@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added ruff to template's `pyproject.toml` under dev extras.
+
 ### Changed
 
 - Reworded two headers in the template README to better reflect their purpose.
