@@ -1,0 +1,20 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from django.conf import settings
+
+from ._typing import override
+
+{{ module_name|upper }}_SETTINGS_NAME = "{{ module_name|upper }}"
+
+
+@dataclass(frozen=True)
+class AppSettings:
+    @override
+    def __getattribute__(self, __name: str) -> object:
+        user_settings = getattr(settings, {{ module_name|upper }}_SETTINGS_NAME, {})
+        return user_settings.get(__name, super().__getattribute__(__name))  # pyright: ignore[reportAny]
+
+
+app_settings = AppSettings()
