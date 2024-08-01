@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.23]
+
 ### Added
 
 - In preparation of it's upcoming release, Python 3.13 is now available as an option when generating template.
@@ -234,7 +236,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.22...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.23...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -257,3 +259,4 @@ Initial release! 🎉
 [2024.20]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.20
 [2024.21]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.21
 [2024.22]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.22
+[2024.23]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.23
