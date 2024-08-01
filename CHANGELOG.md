@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Added `workflow_call` trigger to `test.yml` GitHub Actions workflow, to allow for the `release.yml` workflow to use it before cutting a new release.
+
 ## [2024.23]
 
 ### Added
