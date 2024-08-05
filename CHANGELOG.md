@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.26]
+
 ### Added
 
 - Added both `CONTRIBUTING.md` and `RELEASING.md` files to official documentation.
@@ -266,7 +268,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.25...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.26...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -292,3 +294,4 @@ Initial release! 🎉
 [2024.23]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.23
 [2024.24]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.24
 [2024.25]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.25
+[2024.26]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.26
