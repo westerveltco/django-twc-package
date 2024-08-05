@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- Added `allow-prereleases: true` to all Python setup steps in GitHub Actions workflows. This should allow for easy testing of future, unreleased versions of Python.
+
 ## [2024.25]
 
 ### Added
