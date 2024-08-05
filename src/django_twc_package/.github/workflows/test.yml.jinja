@@ -24,7 +24,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: {{ python_min_version }}
+          python-version: "{{ python_min_version }}"
 
       - name: Install dependencies
         run: |
@@ -47,7 +47,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: ${% raw %}{{ matrix.python-version }}{% endraw %}
+          python-version: "${% raw %}{{ matrix.python-version }}{% endraw %}"
           allow-prereleases: true
 
       - name: Install dependencies
@@ -78,7 +78,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: {{ python_min_version }}
+          python-version: "{{ python_max_version }}"
 
       - name: Install dependencies
         run: |
@@ -96,7 +96,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: {{ python_min_version }}
+          python-version: "{{ python_min_version }}"
 
       - name: Install dependencies
         run: |
