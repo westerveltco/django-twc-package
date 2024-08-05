@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Added both `CONTRIBUTING.md` and `RELEASING.md` files to official documentation.
+- Added our documentation GitHub Team to `CODEOWNERS`.
 
 ### Changed
 
