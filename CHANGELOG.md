@@ -17,6 +17,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added an initial `conftest.py` configuration for Pytest test suite.
+- Added an initial `test_conf.py` for testing custom app settings in package's `conf.py`.
+
 ### Fixed
 
 - Python versions specified in all GitHub Actions workflows now surrounded by quotes, turning them from floats to strings. This avoids the potential for stripping trailing zeros, e.g. `3.10` to `3.1`.
