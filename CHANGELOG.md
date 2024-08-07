@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Django 5.1 is now available as a version choice when generating template.
 
+### Changed
+
+- Python 3.13 now selected by default in version list when generating template.
+
 ## [2024.26]
 
 ### Added
