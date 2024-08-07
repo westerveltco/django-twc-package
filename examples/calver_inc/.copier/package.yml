@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 7cfcd08
+_commit: '5069064'
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
@@ -7,6 +7,7 @@ current_version: '2024.1'
 django_versions:
 - '4.2'
 - '5.0'
+- '5.1'
 docs_domain: westervelt.dev
 github_owner: example_owner
 github_repo: calver-inc1-project
