@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: '5069064'
+_commit: acaf8bf
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
@@ -20,5 +20,6 @@ python_versions:
 - '3.10'
 - '3.11'
 - '3.12'
+- '3.13'
 test_django_main: true
 versioning_scheme: CalVer (YYYY.INC1)
