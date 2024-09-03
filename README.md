@@ -11,38 +11,55 @@ It is tailored to the needs of The Westervelt Company, but unlike our Django pro
 
 This template is built using [Copier](https://copier.readthedocs.io) and includes the following features:
 
--   Modern Python project with only a [`pyproject.toml`](https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-spec) file
-    -   [`hatchling`](https://github.com/pypa/hatch) for a build backend
-    -   [`uv`](https://github.com/astral-sh/uv) for dependency management
--   [`mypy`](https://github.com/python/mypy) and [`django-stubs`](https://github.com/typeddjango/django-stubs) for static type checking
--   [`pytest`](https://github.com/pytest-dev/pytest) for testing
-    -   [`coverage`](https://github.com/nedbat/coveragepy) and [`pytest-cov`](https://github.com/pytest-dev/pytest-cov) for test coverage
-    -   [`model_bakery`](https://github.com/model-bakers/model_bakery) for easy model creation in tests
-    -   [`pytest-django`](https://github.com/pytest-dev/pytest-django) for Django pytest helpers
-    -   [`pytest-randomly`](https://github.com/pytest-dev/pytest-randomly) and [`pytest-reverse`](https://github.com/adamchainz/pytest-reverse) for keeping tests honest
-    -   [`pytest-xdist`](https://github.com/pytest-dev/pytest-xdist) for parallel testing, because ain't nobody got time for a slow test suite
--   [`nox`](https://github.com/theacodes/nox) for testing across multiple versions of Python and Django, linting, and formatting
--   [`bumpver`](https://github.com/mbarkhau/bumpver) for version bumping
-    -   Package can be configured for either [Semantic Versioning](https://semver.org) or [CalVer](https://calver.org) via Copier prompts
--   [`just`](https://github.com/casey/just) for running common development tasks
--   Automatic linting and formatting via [`pre-commit`](https://github.com/pre-commit/pre-commit)
-    -   [`blacken-docs`](https://github.com/adamchainz/blacken-docs) because `ruff` doesn't
-    -   [`django-upgrade`](https://github.com/adamchainz/django-upgrade) for keeping Django up to date automatically
-    -   [`djlint`](https://github.com/rtts/djlint) for linting and formatting Django templates
-    -   [`ruff`](https://github.com/astral-sh/ruff) for blazingly fast formatting and linting
-    -   [`prettier`](https://github.com/prettier/prettier) for formatting CSS, JavaScript, TypeScript, and YAML
-    -   [`validate-pyproject`](https://github.com/abravalheri/validate-pyproject) for ensuring that `pyproject.toml` is valid
-    -   `pretty-format-toml` via [`language-formatters-pre-commit-hooks`](https://github.com/macisamuele/language-formatters-pre-commit-hooks) for TOML formatting
--   Documentation built with [`Sphinx`](https://github.com/sphinx-doc/sphinx), [`MyST-Parser`](https://github.com/executablebooks/MyST-Parser), and the [`furo`](https://github.com/pradyunsg/furo) theme
-    -   Includes a `.readthedocs.yml` file for deploying documentation to [Read the Docs](https://readthedocs.org)
--   CI/CD with [GitHub Actions](https://github.com/features/actions)
-    -   Testing across multiple versions of Python and Django
-    -   Type checking
-    -   Code coverage
-    -   Automatic publishing to [PyPI](https://pypi.org) when a new release is created
-        -   Includes a check for the most recent test run on the `main` branch, ensuring that the package is only published if the tests pass
-        -   Published to PyPI using their new [Trusted Publishers](https://docs.pypi.org/trusted-publishers/) publishing mechanism
-    -   [Dependabot](https://dependabot.com/) for automatic action version updates
+- Modern Python project with only a [`pyproject.toml`](https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-spec) file
+  - [`hatchling`](https://github.com/pypa/hatch) for a build backend
+  - [`uv`](https://github.com/astral-sh/uv) for dependency management
+- [`mypy`](https://github.com/python/mypy) and [`django-stubs`](https://github.com/typeddjango/django-stubs) for static type checking
+- [`pytest`](https://github.com/pytest-dev/pytest) for testing
+  - [`coverage`](https://github.com/nedbat/coveragepy) and [`pytest-cov`](https://github.com/pytest-dev/pytest-cov) for test coverage
+  - [`model_bakery`](https://github.com/model-bakers/model_bakery) for easy model creation in tests
+  - [`pytest-django`](https://github.com/pytest-dev/pytest-django) for Django pytest helpers
+  - [`pytest-randomly`](https://github.com/pytest-dev/pytest-randomly) and [`pytest-reverse`](https://github.com/adamchainz/pytest-reverse) for keeping tests honest
+  - [`pytest-xdist`](https://github.com/pytest-dev/pytest-xdist) for parallel testing, because ain't nobody got time for a slow test suite
+- [`nox`](https://github.com/theacodes/nox) for testing across multiple versions of Python and Django, linting, and formatting
+- [`bumpver`](https://github.com/mbarkhau/bumpver) for version bumping
+  - Package can be configured for either [Semantic Versioning](https://semver.org) or [CalVer](https://calver.org) via Copier prompts
+- [`just`](https://github.com/casey/just) for running common development tasks
+- Automatic linting and formatting via [`pre-commit`](https://github.com/pre-commit/pre-commit)
+  - [`blacken-docs`](https://github.com/adamchainz/blacken-docs) because `ruff` doesn't
+  - [`django-upgrade`](https://github.com/adamchainz/django-upgrade) for keeping Django up to date automatically
+  - [`djlint`](https://github.com/rtts/djlint) for linting and formatting Django templates
+  - [`ruff`](https://github.com/astral-sh/ruff) for blazingly fast formatting and linting
+  - [`prettier`](https://github.com/prettier/prettier) for formatting CSS, JavaScript, TypeScript, and YAML
+  - [`validate-pyproject`](https://github.com/abravalheri/validate-pyproject) for ensuring that `pyproject.toml` is valid
+  - `pretty-format-toml` via [`language-formatters-pre-commit-hooks`](https://github.com/macisamuele/language-formatters-pre-commit-hooks) for TOML formatting
+- Documentation built with [`Sphinx`](https://github.com/sphinx-doc/sphinx), [`MyST-Parser`](https://github.com/executablebooks/MyST-Parser), and the [`furo`](https://github.com/pradyunsg/furo) theme
+  - Includes a `.readthedocs.yml` file for deploying documentation to [Read the Docs](https://readthedocs.org)
+- CI/CD with [GitHub Actions](https://github.com/features/actions)
+  - Testing across multiple versions of Python and Django
+  - Type checking
+  - Code coverage
+  - Automatic publishing to [PyPI](https://pypi.org) when a new release is created
+    - Includes a check for the most recent test run on the `main` branch, ensuring that the package is only published if the tests pass
+    - Published to PyPI using their new [Trusted Publishers](https://docs.pypi.org/trusted-publishers/) publishing mechanism
+  - [Dependabot](https://dependabot.com/) for automatic action version updates
+
+## Requirements
+
+- [Copier](https://copier.readthedocs.io)
+- [Copier Template Extensions](https://github.com/copier-org/copier-templates-extensions)
+
+## Installation
+
+You will need to install the required packages before being able to generate a project using this template. They are automatically included in the development dependencies of the generated project, so this is a one-time by-hand installation.
+
+You can use a tool like `pipx` or `uv tool install` for this:
+
+```bash
+pipx install copier copier-templates-extensions
+# or for you bleeding-edge folks
+uv tool install copier copier-templates-extensions
+```
 
 ## Usage
 
