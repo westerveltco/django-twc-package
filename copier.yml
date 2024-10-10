@@ -126,4 +126,3 @@ _tasks:
   # error and we want to continue anyway
   - "SKIP=ruff-format just lint"
   - "just lint 2>/dev/null || echo 'Pre-commit run on all files.'"
-  - "just bootstrap"
