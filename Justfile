@@ -10,7 +10,7 @@ fmt:
     @just --fmt
 
 [private]
-generate-example DATA_FILE:
+@generate-example DATA_FILE:
     #!/usr/bin/env bash
 
     set -euo pipefail
@@ -31,7 +31,7 @@ bootstrap:
 
 generate-examples:
     for file in `ls examples/*.yml`; do \
-        @just generate-example $file; \
+        just generate-example $file; \
     done
 
 lint:
