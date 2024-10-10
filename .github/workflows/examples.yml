@@ -42,7 +42,7 @@ jobs:
           just generate-examples
 
       - name: Upload examples artifact
-        if: ${{ ! github.event.workflow_call }}
+        if: github.event_name != "workflow_call"
         uses: actions/upload-artifact@v4
         with:
           name: generated-examples
@@ -50,7 +50,7 @@ jobs:
 
   update-repo:
     needs: generate
-    if: ${{ ! github.event.workflow_call }}
+    if: github.event_name != "workflow_call"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
