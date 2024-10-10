@@ -19,7 +19,7 @@ env:
   FORCE_COLOR: "1"
 
 jobs:
-  examples:
+  generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,22 +32,39 @@ jobs:
           enable-cache: true
           version: "0.4.x"
 
+      - name: Generate examples
+        run: |
+          just generate-examples
+
+      - name: Upload examples artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-examples
+          path: examples/
+
+  update-repo:
+    needs: generate
+    if: ${{ ! github.event.workflow_call }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download examples artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-examples
+          path: examples/
+
       - name: Setup Git
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@users.noreply.github.com"
 
-      - name: Generate examples
-        run: |
-          just generate-examples
-
       - name: Get SHA of push commit
-        if: github.event != 'workflow_call'
         id: shortsha
         run: echo "shortsha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Commit and push if examples have changed
-        if: github.event != 'workflow_call'
         run: |-
           git add -A
           git commit -m "Regenerated examples for ${{ steps.shortsha.outputs.shortsha }}" || exit 0
