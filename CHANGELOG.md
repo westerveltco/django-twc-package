@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Dropped the `python -m` prefix in `gha_matrix` nox session.
+
 ## [2024.29]
 
 ### Removed
