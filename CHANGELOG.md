@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2024.28]
+
 ### Added
 
 - Template is linted and bootstrapped after generation.
@@ -300,7 +302,7 @@ Initial release! 🎉
 
 - Josh Thomas <josh@joshthomas.dev> (maintainer)
 
-[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.27...HEAD
+[unreleased]: https://github.com/westerveltco/django-twc-package/compare/v2024.28...HEAD
 [2024.1]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.1
 [2024.2]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.2
 [2024.3]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.3
@@ -328,3 +330,4 @@ Initial release! 🎉
 [2024.25]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.25
 [2024.26]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.26
 [2024.27]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.27
+[2024.28]: https://github.com/westerveltco/django-twc-package/releases/tag/v2024.28
