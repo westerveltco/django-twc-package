@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v2024.27-15-g562b7d4
+_commit: v2024.28-5-g8a236dc
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
@@ -15,7 +15,6 @@ module_name: semver_project
 package_description: An example Django package
 package_name: semver-project
 python_versions:
-- '3.8'
 - '3.9'
 - '3.10'
 - '3.11'

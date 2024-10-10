@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v2024.27-15-g8755ecc
+_commit: v2024.28-5-g24f502a
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
@@ -15,7 +15,6 @@ module_name: calver_inc1_project
 package_description: An example Django package
 package_name: calver-inc1-project
 python_versions:
-- '3.8'
 - '3.9'
 - '3.10'
 - '3.11'
