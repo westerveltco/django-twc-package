@@ -30,4 +30,5 @@ jobs:
           uv run pytest
 
   examples:
+    if: github.event_name == 'pull_request'
     uses: ./.github/workflows/examples.yml
