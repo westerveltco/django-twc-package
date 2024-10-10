@@ -7,6 +7,7 @@ on:
       - "examples/**.yml"
       - "src/**"
       - "copier.yml"
+  workflow_call:
   workflow_dispatch:
 
 concurrency:
@@ -25,11 +26,11 @@ jobs:
 
       - uses: extractions/setup-just@v2
 
-      - uses: westerveltco/setup-ci-action@v0
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "3.8"
-          python-requirements: requirements-dev.lock
-          use-uv: true
+          enable-cache: true
+          version: "0.4.x"
 
       - name: Setup Git
         run: |
@@ -41,10 +42,12 @@ jobs:
           just generate-examples
 
       - name: Get SHA of push commit
+        if: github.event != 'workflow_call'
         id: shortsha
         run: echo "shortsha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Commit and push if examples have changed
+        if: github.event != 'workflow_call'
         run: |-
           git add -A
           git commit -m "Regenerated examples for ${{ steps.shortsha.outputs.shortsha }}" || exit 0
