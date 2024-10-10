@@ -119,7 +119,11 @@ test_django_main:
 # ----------------------------------------------------------------------
 
 _tasks:
-  # run pre-commit after generation, pipe any errors to /dev/null since if a file is
-  # formatted, that exits with an error and we want to continue anyway
+  # run pre-commit after generation, first without ruff-format hook since it
+  # always formats pyproject.toml to sort (since it finally has a module name
+  # to sort by) -- this is to check no errors. then run a second time but pipe
+  # any errors to /dev/null since if a file is formatted, that exits with an
+  # error and we want to continue anyway
+  - "SKIP=ruff-format just lint"
   - "just lint 2>/dev/null || echo 'Pre-commit run on all files.'"
   - "just bootstrap"
