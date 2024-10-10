@@ -18,12 +18,7 @@ fmt:
     DIRECTORY="{{ trim_end_match(DATA_FILE, '.yml') }}"
     rm -rf $DIRECTORY
 
-    COMMAND="copier copy -r HEAD . $DIRECTORY --force --trust --data-file {{ DATA_FILE }}"
-    if [ -z "$(command -v rye)" ]; then
-        eval $COMMAND
-    else
-        rye run $COMMAND
-    fi
+    uv run copier copy -r HEAD . $DIRECTORY --force --trust --data-file {{ DATA_FILE }}
 
 bootstrap:
     uv python install
