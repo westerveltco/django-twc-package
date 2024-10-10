@@ -113,3 +113,13 @@ test_django_main:
   type: bool
   help: Test against the Django `main` branch?
   default: true
+
+# ----------------------------------------------------------------------
+# POST GENERATION TASKS
+# ----------------------------------------------------------------------
+
+_tasks:
+  # run pre-commit after generation, pipe any errors to /dev/null since if a file is
+  # formatted, that exits with an error and we want to continue anyway
+  - "just lint 2>/dev/null || echo 'Pre-commit run on all files.'"
+  - "just bootstrap"

@@ -13,6 +13,9 @@ concurrency:
 env:
   PYTHONUNBUFFERED: "1"
   FORCE_COLOR: "1"
+  PY_MAX_VERSION: "{{ python_max_version }}"
+  PY_MIN_VERSION: "{{ python_min_version }}"
+  UV_VERSION: "0.4.x"
 
 jobs:
   generate-matrix:
@@ -22,19 +25,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "{{ python_min_version }}"
-          allow-prereleases: true
+          enable-cache: true
+          version: ${% raw %}{{ env.UV_VERSION }}{% endraw %}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip uv
-          python -m uv pip install --system nox
+      - name: Install Python
+        run: uv python install ${% raw %}{{ env.PY_MIN_VERSION }}{% endraw %}
 
       - id: set-matrix
         run: |
-          echo "matrix=$(python -m nox -l --json | jq -c '[.[] | select(.name == "tests") | {"python-version": .python, "django-version": .call_spec.django}] | {include: .}')" >> $GITHUB_OUTPUT
+          uv run nox --session "gha_matrix"
 
   test:
     name: Python ${% raw %}{{ matrix.python-version }}{% endraw %}, Django ${% raw %}{{ matrix.django-version }}{% endraw %}
@@ -46,19 +48,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "${% raw %}{{ matrix.python-version }}{% endraw %}"
-          allow-prereleases: true
+          enable-cache: true
+          version: ${% raw %}{{ env.UV_VERSION }}{% endraw %}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip uv
-          python -m uv pip install --system nox
+      - name: Install Python
+        run: uv python install ${% raw %}{{ matrix.python-version }}{% endraw %}
 
       - name: Run tests
         run: |
-          python -m nox --session "tests(python='${% raw %}{{ matrix.python-version }}{% endraw %}', django='${% raw %}{{ matrix.django-version }}{% endraw %}')"
+          uv run nox --session "tests(python='${% raw %}{{ matrix.python-version }}{% endraw %}', django='${% raw %}{{ matrix.django-version }}{% endraw %}')"
 
   tests:
     runs-on: ubuntu-latest
@@ -76,36 +77,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "{{ python_max_version }}"
-          allow-prereleases: true
+          enable-cache: true
+          version: ${% raw %}{{ env.UV_VERSION }}{% endraw %}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip uv
-          python -m uv pip install --system nox
+      - name: Install Python
+        run: uv python install ${% raw %}{{ env.PY_MAX_VERSION }}{% endraw %}
 
       - name: Run mypy
         run: |
-          python -m nox --session "mypy"
+          uv run nox --session "types"
 
   coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "{{ python_min_version }}"
-          allow-prereleases: true
+          enable-cache: true
+          version: ${% raw %}{{ env.UV_VERSION }}{% endraw %}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip uv
-          python -m uv pip install --system nox
+      - name: Install Python
+        run: uv python install ${% raw %}{{ env.PY_MIN_VERSION }}{% endraw %}
 
-      - name: Run coverage
+      - name: Run mypy
         run: |
-          python -m nox --session "coverage"
+          uv run nox --session "coverage"

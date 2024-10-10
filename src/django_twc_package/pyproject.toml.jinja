@@ -34,26 +34,6 @@ readme = "README.md"
 requires-python = ">={{ python_min_version }}"
 
 [project.optional-dependencies]
-dev = [
-  "bumpver",
-  "copier",
-  "copier-templates-extensions",
-  "coverage[toml]",
-  "django-stubs",
-  "django-stubs-ext",
-  "faker",
-  "hatch",
-  "mypy",
-  "model-bakery",
-  "nox[uv]",
-  "pytest",
-  "pytest-cov",
-  "pytest-django",
-  "pytest-randomly",
-  "pytest-reverse",
-  "pytest-xdist",
-  "ruff"
-]
 docs = [
   "cogapp",
   "furo",
@@ -64,7 +44,20 @@ docs = [
   "sphinx-copybutton",
   "sphinx-inline-tabs"
 ]
-lint = ["pre-commit"]
+tests = [
+  "faker",
+  "model-bakery",
+  "pytest",
+  "pytest-cov",
+  "pytest-django",
+  "pytest-randomly",
+  "pytest-xdist"
+]
+types = [
+  "django-stubs",
+  "django-stubs-ext",
+  "mypy"
+]
 
 [project.urls]
 Documentation = "https://{{ package_name }}.{{ docs_domain }}/"
@@ -146,8 +139,8 @@ path = "src/{{ module_name }}/__init__.py"
 check_untyped_defs = true
 exclude = [
   "docs",
-  "tests",
   "migrations",
+  "tests",
   "venv",
   ".venv"
 ]
@@ -165,8 +158,8 @@ ignore_errors = true
 ignore_missing_imports = true
 module = [
   "*.migrations.*",
-  "tests.*",
-  "docs.*"
+  "docs.*",
+  "tests.*"
 ]
 
 [tool.mypy_django_plugin]
@@ -244,3 +237,13 @@ required-imports = ["from __future__ import annotations"]
 [tool.ruff.lint.pyupgrade]
 # Preserve types, even if a file imports `from __future__ import annotations`.
 keep-runtime-typing = true
+
+[tool.uv]
+dev-dependencies = [
+  "copier",
+  "copier-templates-extensions",
+  "django-stubs",
+  "django-stubs-ext",
+  "nox[uv]",
+  "ruff"
+]
