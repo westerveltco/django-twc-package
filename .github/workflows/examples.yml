@@ -41,6 +41,8 @@ jobs:
         run: |
           just generate-examples
           echo "${{ github.event_name }}"
+          echo "${{ github.event.workflow_call }}"
+          echo "${{ github.event.pull_request }}"
 
       - name: Upload examples artifact
         if: github.event_name != 'workflow_call'
