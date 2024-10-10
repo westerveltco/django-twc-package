@@ -10,10 +10,6 @@ on:
   workflow_call:
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref }}
-  cancel-in-progress: true
-
 env:
   PYTHONUNBUFFERED: "1"
   FORCE_COLOR: "1"
@@ -21,6 +17,9 @@ env:
 jobs:
   examples:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.head_ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
 
