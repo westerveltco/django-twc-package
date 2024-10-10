@@ -32,11 +32,17 @@ jobs:
           enable-cache: true
           version: "0.4.x"
 
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@users.noreply.github.com"
+
       - name: Generate examples
         run: |
           just generate-examples
 
       - name: Upload examples artifact
+        if: ${{ ! github.event.workflow_call }}
         uses: actions/upload-artifact@v4
         with:
           name: generated-examples
