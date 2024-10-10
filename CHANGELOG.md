@@ -17,6 +17,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Template is linted and bootstrapped after generation.
+- Added a `gha_matrix` nox session to template for generating GHA job matrix.
+
+### Changed
+
+- Template now uses `uv` as a project and dependency management tool.
+- GitHub Actions in template now use `astral-sh/setup-uv` for Python installation, dependency installation, and command running.
+- Moved documentation and copier commands to separate Just sub-modules.
+- Now using `uv` dev dependencies instead of `[dev]` extra.
+- Moved template's test dependencies to dedicated `[tests]` extra.
+
+### Removed
+
+- Python 3.8 support for `django-twc-package` project.
+- Removed `[lint]` extra from template's optional dependencies. This is now handled by `uv run`.
+
+### Fixed
+
+- Added correct Python version skip logic for Django 5.1 in template's `noxfile.py`.
+
 ## [2024.27]
 
 ### Added
