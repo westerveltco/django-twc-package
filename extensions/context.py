@@ -42,7 +42,7 @@ class NoxfileVersions(ContextHook):
         )
 
         lts_versions = ", ".join(
-            [f'DJ{v.replace(".", "")}' for v in django_versions if v.endswith(".2")]
+            [f"DJ{v.replace('.', '')}" for v in django_versions if v.endswith(".2")]
         )
         context["nox_django_versions"] = self.get_nox_version_list(
             versions=django_versions,
