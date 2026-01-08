@@ -38,7 +38,12 @@ class NoxfileVersions(ContextHook):
             django_versions.append("main")
 
         context["nox_python_versions"] = self.get_nox_version_list(
-            versions=python_versions, prefix="PY"
+            versions=python_versions,
+            prefix="PY",
+            # TODO: this needs to be pre-pre-versions
+            pre_versions=f"PY{DJMAIN_MIN_PY.replace(',', '')}"
+            if DJMAIN_MIN_PY not in python_versions
+            else None,
         )
 
         lts_versions = ", ".join(
@@ -68,7 +73,7 @@ class NoxfileVersions(ContextHook):
         latest_index: int = -1,
     ) -> str:
         variable_map = {}
-        for v in versions:
+        for v in sorted(versions):
             if "." in v:
                 variable_map[f"{prefix}{v.replace('.', '')}"] = v
             else:
