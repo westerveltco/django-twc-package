@@ -17,6 +17,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added Python 3.14 and Django 6.0/6.1 as template options.
+
+### Changed
+
+- The generated `should_skip` in the template's noxfile is now derived from a Django-to-minimum-Python mapping in the template extensions, rather than hardcoded per-version rules. Django 6.0+ and `main` now correctly require Python 3.12+.
+- Bumped the generated `django-upgrade` pre-commit hook to 1.31.1, which is the first pinned version that accepts a Django 5.2+ `--target-version`.
+- Regenerated the examples.
+
+### Removed
+
+- Removed EOL Python 3.9 as a template option.
+- Removed EOL Django 4.2, 5.0, and 5.1 as template options.
+
 ## [2024.30]
 
 ### Fixed

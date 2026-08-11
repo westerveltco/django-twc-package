@@ -4,4 +4,4 @@ from calver_mminc1_project import __version__
 
 
 def test_version():
-    assert __version__ == "2026.4.1"
+    assert __version__ == "2026.8.1"

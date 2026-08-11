@@ -1,13 +1,13 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: v2024.29-6-g1985bda
+_commit: v2024.30-94-g78563f3
 _src_path: .
 author_email: johndoe@example.com
 author_name: John Doe
-current_version: 2024.10.1
+current_version: 2026.8.1
 django_versions:
-- '4.2'
-- '5.0'
-- '5.1'
+- '5.2'
+- '6.0'
+- '6.1'
 docs_domain: westervelt.dev
 github_owner: example_owner
 github_repo: calver-mminc1-project
@@ -15,10 +15,10 @@ module_name: calver_mminc1_project
 package_description: An example Django package
 package_name: calver-mminc1-project
 python_versions:
-- '3.9'
 - '3.10'
 - '3.11'
 - '3.12'
 - '3.13'
+- '3.14'
 test_django_main: true
 versioning_scheme: CalVer (YYYY.MM.INC1)

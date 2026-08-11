@@ -24,23 +24,29 @@ def should_skip(python: str, django: str) -> bool:
 
     {% if test_django_main -%}
     if django == DJMAIN and version(python) < version(DJMAIN_MIN_PY):
-        # Django main requires Python 3.10+
+        # Django main requires Python {{ djmain_min_py }}+
         return True
-    {%- endif %}
 
-    {% if "5.0" in django_versions -%}
-    if django == DJ50 and version(python) < version(PY310):
-        # Django 5.0 requires Python 3.10+
+    {% endif -%}
+    {%- for group in nox_django_min_py_groups -%}
+    {%- set condition %}
+    {%- if group.django_refs | length == 1 -%}
+    django == {{ group.django_refs[0] }}
+    {%- else -%}
+    django in ({{ group.django_refs | join(", ") }})
+    {%- endif -%}
+    {%- endset -%}
+    # Django {{ group.django_versions | join(", ") }} require{{ "s" if group.django_versions | length == 1 else "" }} Python {{ group.min_py }}+
+    {% if loop.last -%}
+    return {{ condition }} and version(python) < version({{ group.min_py_ref }})
+    {%- else -%}
+    if {{ condition }} and version(python) < version({{ group.min_py_ref }}):
         return True
-    {%- endif %}
 
-    {% if "5.1" in django_versions -%}
-    if django == DJ51 and version(python) < version(PY310):
-        # Django 5.1 requires Python 3.10+
-        return True
-    {%- endif %}
-
+    {% endif -%}
+    {%- else -%}
     return False
+    {%- endfor %}
 
 
 @nox.session
