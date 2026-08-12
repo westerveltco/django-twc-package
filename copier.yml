@@ -91,22 +91,22 @@ python_versions:
   help: Select all the versions of Python that should be supported.
   multiselect: true
   choices:
-    "3.9": "3.9"
     "3.10": "3.10"
     "3.11": "3.11"
     "3.12": "3.12"
     "3.13": "3.13"
-  default: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    "3.14": "3.14"
+  default: ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
 django_versions:
   type: str
   help: Select all the versions of Django that should be supported.
   multiselect: true
   choices:
-    "4.2 (LTS)": "4.2"
-    "5.0": "5.0"
-    "5.1": "5.1"
-  default: ["4.2", "5.0", "5.1"]
+    "5.2 (LTS)": "5.2"
+    "6.0": "6.0"
+    "6.1": "6.1"
+  default: ["5.2", "6.0", "6.1"]
 
 test_django_main:
   type: bool

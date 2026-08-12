@@ -2,15 +2,15 @@
 
 [![PyPI](https://img.shields.io/pypi/v/calver-inc1-project)](https://pypi.org/project/calver-inc1-project/)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/calver-inc1-project)
-![Django Version](https://img.shields.io/badge/django-4.2%20%7C%205.0%20%7C%205.1-%2344B78B?labelColor=%23092E20)
+![Django Version](https://img.shields.io/badge/django-5.2%20%7C%206.0%20%7C%206.1-%2344B78B?labelColor=%23092E20)
 <!-- https://shields.io/badges -->
-<!-- django-4.2 | 5.0 | 5.1-#44B78B -->
+<!-- django-5.2 | 6.0 | 6.1-#44B78B -->
 <!-- labelColor=%23092E20 -->
 
 ## Requirements
 
-- Python 3.9, 3.10, 3.11, 3.12, 3.13
-- Django 4.2, 5.0, 5.1
+- Python 3.10, 3.11, 3.12, 3.13, 3.14
+- Django 5.2, 6.0, 6.1
 
 ## Installation
 

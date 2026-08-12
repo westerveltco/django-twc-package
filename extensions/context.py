@@ -2,7 +2,16 @@ from __future__ import annotations
 
 from copier_templates_extensions import ContextHook
 
-DJMAIN_MIN_PY = "3.10"
+DJMAIN_MIN_PY = "3.12"
+
+# Minimum Python version required by each supported Django version, per the
+# upstream support matrix. Django versions not listed here are assumed to work
+# on every Python version the package supports.
+DJANGO_MIN_PY = {
+    "5.2": "3.10",
+    "6.0": "3.12",
+    "6.1": "3.12",
+}
 
 
 class MinMaxVersion(ContextHook):
@@ -47,7 +56,7 @@ class NoxfileVersions(ContextHook):
         context["nox_django_versions"] = self.get_nox_version_list(
             versions=django_versions,
             prefix="DJ",
-            pre_versions=f"\nDJMAIN_MIN_PY = PY{DJMAIN_MIN_PY.replace('.', '')}"
+            pre_versions=f"\nDJMAIN_MIN_PY = {py_ref(DJMAIN_MIN_PY, python_versions)}"
             if test_django_main
             else None,
             post_versions=f"\nDJ_LTS = [{lts_versions}]",
@@ -55,7 +64,46 @@ class NoxfileVersions(ContextHook):
             latest_index=-2 if test_django_main else -1,
         )
 
+        context["djmain_min_py"] = DJMAIN_MIN_PY
+        context["nox_django_min_py_groups"] = self.get_django_min_py_groups(
+            python_versions=python_versions,
+            django_versions=[v for v in django_versions if v != "main"],
+        )
+
         return context
+
+    def get_django_min_py_groups(
+        self, *, python_versions: list[str], django_versions: list[str]
+    ) -> list[dict[str, object]]:
+        """Group the selected Django versions by the minimum Python they require.
+
+        Only groups that can actually be skipped are returned, i.e. those whose
+        minimum Python is higher than the lowest selected Python version. Each
+        group is used to render a rule in the generated ``should_skip``.
+        """
+        if not python_versions or not django_versions:
+            return []
+
+        min_python = min(python_versions, key=version)
+
+        groups: dict[str, list[str]] = {}
+        for dj in django_versions:
+            min_py = DJANGO_MIN_PY.get(dj)
+            if min_py is None or version(min_py) <= version(min_python):
+                continue
+            groups.setdefault(min_py, []).append(dj)
+
+        return [
+            {
+                "min_py": min_py,
+                "min_py_ref": py_ref(min_py, python_versions),
+                "django_versions": sorted(djs, key=version),
+                "django_refs": [
+                    f"DJ{v.replace('.', '')}" for v in sorted(djs, key=version)
+                ],
+            }
+            for min_py, djs in sorted(groups.items(), key=lambda kv: version(kv[0]))
+        ]
 
     def get_nox_version_list(
         self,
@@ -89,6 +137,18 @@ class NoxfileVersions(ContextHook):
         ret += f"\n{prefix}_LATEST = {prefix}_VERSIONS[{latest_index}]"
 
         return ret
+
+
+def py_ref(py_version: str, python_versions: list[str]) -> str:
+    """Reference a Python version in the generated noxfile.
+
+    Use the ``PYXYZ`` constant when that version is one of the selected versions,
+    otherwise fall back to a plain string literal so the generated noxfile does
+    not reference an undefined name.
+    """
+    if py_version in python_versions:
+        return f"PY{py_version.replace('.', '')}"
+    return f'"{py_version}"'
 
 
 def version(ver: str) -> tuple[int, ...]:
