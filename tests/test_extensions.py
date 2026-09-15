@@ -13,11 +13,11 @@ from extensions.context import NoxfileVersions
 
 @pytest.fixture
 def environment():
-    return Environment(loader=FileSystemLoader(""))
+    return Environment(loader=FileSystemLoader(""), autoescape=True)
 
 
 @pytest.mark.parametrize(
-    "versions, expected",
+    ("versions", "expected"),
     [
         ([], ("", "")),
         (
@@ -43,7 +43,7 @@ def test_min_max_version(environment, versions, expected):
 
 
 @pytest.mark.parametrize(
-    "context, expected",
+    ("context", "expected"),
     [
         (
             {
