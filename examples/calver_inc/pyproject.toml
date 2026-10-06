@@ -4,7 +4,7 @@ requires = ["hatchling"]
 
 [project]
 authors = [
-  {name = "John Doe", email = "johndoe@example.com"}
+  { name = "John Doe", email = "johndoe@example.com" }
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -30,7 +30,7 @@ dependencies = [
 description = "An example Django package"
 dynamic = ["version"]
 keywords = []
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 name = "calver-inc1-project"
 readme = "README.md"
 requires-python = ">=3.10"
