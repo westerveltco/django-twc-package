@@ -43,6 +43,7 @@ repos:
     hooks:
       - id: pretty-format-toml
         args: [--autofix]
+        exclude: uv\.lock
         additional_dependencies: [toml-sort>=0.25]
 
   - repo: https://github.com/abravalheri/validate-pyproject

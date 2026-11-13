@@ -23,7 +23,7 @@ jobs:
         uses: astral-sh/setup-uv@v10.3.3
         with:
           enable-cache: true
-          version: "0.4.x"
+          version: "0.13.x"
 
       - name: Run tests
         run: |
